@@ -8,7 +8,5 @@
 class Factura:
     def _init_ (self):
         self.idFactura=0
-        self.Cliente
         self.Venta
-        self.Usuario
         
