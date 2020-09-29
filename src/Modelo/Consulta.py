@@ -6,4 +6,5 @@ class Consulta:
         self.fechaBusquedaFinal = fechaBusquedaFinal
         self.montoTotal = montoTotal
         self.inventario = inventario
+        self.prueba
         
