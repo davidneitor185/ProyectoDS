@@ -1,0 +1,16 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+#barra {
+    position: fixed;
+    width: 200;
+    height: 100%;
+    background: #240D66;
+}
+
+#barra ul li{
+    color: rgba(230,230,230,.9);
+    text-align: center;
+}

@@ -16,3 +16,6 @@ def consultas(request):
 def crear_cliente(request):
     return render(request, 'ATodoGasApp/crear_cliente.html')
 
+def index(request):
+    return render(request, 'ATodoGasApp/index.html')
+
