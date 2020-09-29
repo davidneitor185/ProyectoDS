@@ -10,32 +10,39 @@
     background: #240D66;
     left:-150px;
     transition: all 500ms linear;
+    border:3px solid #33303A;
 }
 
 #barraUp {
     position: static;
-    width: 200;
-    height: 100%;
+    width: 250;
+    height: 30px;
     background: #240D66;
+    border: 3px solid #33303A;
     
     
 }
 
-#barraUp ul li{
+#barraUp  li{
+    
     color: rgba(230,230,230,.9);
     text-align: center;
+    
     padding: 15px 10px;
     list-style: none;
     border-bottom: 1px solid rgba(100,100,100,.3);
     cursor: pointer;
-     
+    float: right;
+    
     
 
 }
 #barraUp a{
     color:rgba(230,230,230,.9);
     list-style: none;
+    display: inline;
     font-family: sans-serif;
+    
 
 }
 
