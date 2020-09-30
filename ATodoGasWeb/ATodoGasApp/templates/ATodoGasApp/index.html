@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{% static 'ATodoGasApp/css/cs_Index.css' %}">
+
+</head>
+
+<body>
+    
+    <header >
+        
+            <ul id = "barraUp">
+                <li><a href="#" style="text-decoration: none;" >Logout</a></li>
+                <li><a href="#" style="text-decoration: none;" >Usuario</a></li>
+            </ul>
+        
+    </header>
+    
+
+    
+    <div id = "barra" class = active>
+        <div class = "boton-esconder">
+            <span>&#9776;</span>
+        </div>
+        <ul>
+            <li>
+                <img src="{% static 'ATodoGasApp/logo.png' %}" alt = "Logo" class=logo>
+            </li>
+            <li><a href="#" style="text-decoration: none;" >Consultar</a></li>
+            <li><a href="#" style="text-decoration: none;" >Crear Cliente</a></li>
+            <li><a href="#" style="text-decoration: none;" >Venta</a></li>
+
+    </div>
+    <script src= "{% static 'ATodoGasApp/js/js_Index.js' %}" charset="utf-8"></script>
+</body>
+</html>

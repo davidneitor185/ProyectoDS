@@ -5,12 +5,97 @@
 
 #barra {
     position: fixed;
-    width: 200;
+    width: 150;
     height: 100%;
     background: #240D66;
+    left:-150px;
+    transition: all 500ms linear;
+    border:3px solid #33303A;
 }
 
+#barraUp {
+    position: static;
+    width: 250;
+    height: 30px;
+    background: #240D66;
+    border: 3px solid #33303A;
+    
+    
+}
+
+#barraUp  li{
+    
+    color: rgba(230,230,230,.9);
+    text-align: center;
+    
+    padding: 15px 10px;
+    list-style: none;
+    border-bottom: 1px solid rgba(100,100,100,.3);
+    cursor: pointer;
+    float: right;
+    
+    
+
+}
+#barraUp a{
+    color:rgba(230,230,230,.9);
+    list-style: none;
+    display: inline;
+    font-family: sans-serif;
+    
+
+}
+
+#barraUp a:hover{
+    color:#8B8892;
+}
+#barra.active{
+    left:0;
+}
+
+#barra a{
+    color:rgba(230,230,230,.9);
+    list-style: none;
+    font-family: sans-serif;
+
+}
+
+#barra a:hover{
+    color:#8B8892;
+}
 #barra ul li{
     color: rgba(230,230,230,.9);
     text-align: center;
+    padding: 15px 10px;
+    list-style: none;
+    border-bottom: 1px solid rgba(100,100,100,.3);
+    cursor: pointer;
+    
+     
+    
+
+}
+
+
+.logo{
+   
+    display: block;
+    margin:0 auto;
+    width: 100px;
+    height: 100px;
+}
+
+#barra .boton-esconder{
+    position: absolute;
+    left: 150px;
+    top: 20px;
+    cursor: pointer;
+}
+
+#barra .boton-esconder span {
+    display: block;
+    width: 20px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #240D66;
 }
