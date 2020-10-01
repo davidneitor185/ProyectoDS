@@ -59,7 +59,7 @@ q:before, q:after {
 
 #MenuSuperior {
     width: 100%;
-    height: 8%;
+    height: 5%;
     background-color: rgba(0, 174, 243, .8);
 }
 
@@ -100,7 +100,7 @@ q:before, q:after {
 
 #Contenido {
 width: 100%;
-height: 92%;
+height: 95%;
 background-color: white;
 ;
 }
