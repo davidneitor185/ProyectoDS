@@ -1,0 +1,23 @@
+body{
+    background-image: url(../fondo_login.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.formulario{
+    background: rgba(0, 174, 243,.1);
+    padding: 20px;
+}
+.ingresar{
+    background: #0375f7e7;
+    border-radius: 10px;
+    box-shadow:0 0 30px rgba(0, 174, 243,.568);
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    border: 1px solid #000000;
+}
+.letralogo{
+    color: white;
+    font-size: 30px;
+}
