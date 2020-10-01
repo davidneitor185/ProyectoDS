@@ -1,16 +1,273 @@
-*{
-    margin:0;
-    padding:0;
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+    vertical-align: baseline;
+    position: relative;
 }
 
-#barra {
-    position: fixed;
-    width: 200;
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+    position: relative;
+}
+
+html{
+    background-color:  rgba(0, 174, 243, .8);
+}
+body{
+    background-color: black;
+}
+html, body {
+    line-height: 1;
+    /*background: rgb(92,141,184);
+    background: linear-gradient(0deg, rgba(92,141,184,1) 0%, rgba(36,13,102,1) 10%, rgba(36,13,102,1) 90%, rgba(92,141,184,1) 100%);*/
+    width: 100%;
     height: 100%;
-    background: #240D66;
+    
 }
 
-#barra ul li{
-    color: rgba(230,230,230,.9);
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+/************************* Menu Superior ********************/
+
+#MenuSuperior {
+    width: 100%;
+    height: 5%;
+    background-color: rgba(0, 174, 243, .8);
+}
+
+#MenuSuperior ul{
+    width: 25%;
+    height: 100%;
+    float: right;
+    display: table;
+}
+#MenuSuperior  li{
     text-align: center;
+    width: 40%;
+    display: table-cell;
+    background-color: /*#240D66*/rgb(0,193,255);
+    vertical-align: middle;
+    border-left: 1px solid rgba(100,100,100,.3);
+    cursor: pointer;
+    transition: background-color 0.7s;
+    font-weight: bold;
+}
+#MenuSuperior li:last-child{
+    border-right: 1px solid rgba(100,100,100,.3);
+}
+#MenuSuperior li:hover{
+    background-color:rgb(0,124,255) ;
+}
+#MenuSuperior a{
+    color:rgba(230,230,230,.9);
+    font-family: sans-serif;
+    
+
+}
+#MenuSuperior a:hover{
+    color:#8B8892;
+}
+
+/*********************** Contenido ***********************/
+
+#Contenido {
+width: 100%;
+height: 95%;
+background-color: white;
+;
+}
+
+/*********************** Menu Lateral ********************/
+#Contenedor.active{
+    left:0;
+}
+
+
+#Contenedor {
+    width: 16%;
+    height: 100%;
+    transition: transform 1s linear;
+    float: left;
+    left:-20%;
+    transition: all 500ms linear
+    
+    
+    
+}
+
+#MenuLateral{
+    width: 100%;
+    height: 100%;
+    background-color:/*#240D66*/ rgba(0, 174, 243, .6);
+    position: absolute;
+}
+
+#logo{
+    width: 80%;
+    height: 30%;
+    margin: auto;
+    background-color: chartreuse;
+    background: url("/../static/ATodoGasApp/logo.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+
+
+
+#MenuLateral ul{
+    width: 100%;
+    margin-top:7% ;
+    
+    
+}
+#MenuLateral ul li{
+    background-color:/* #240D66*/rgb(0,193,255);
+    text-align: center;
+    padding: 15px 10px;
+    list-style: none;
+    border-bottom: 1px solid rgba(100,100,100,.3);
+    cursor: pointer;
+    transition: background-color 0.7s;
+    font-weight: bold;
+}
+
+#MenuLateral ul li:first-child{
+    border-top: 1px solid rgba(100,100,100,.3);
+}
+
+#MenuLateral ul li:hover{
+    background-color:rgb(0,124,255);
+}
+#MenuLateral a{
+    color:#ddd;
+    list-style: none;
+    font-family: sans-serif;
+    font-style: bold;
+}
+
+#MenuLateral ul li:hover a{
+    color:#fff;
+}
+
+/***************** Iconos Menu lateral ************************/
+.logo-Menu {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(100,100,100,.3);
+    float: right; 
+}
+
+#Consulta{
+    background: url("/../static/ATodoGasApp/Clientes.png");
+    background-size: cover;
+}
+
+#Cliente{
+    background: url("/../static/ATodoGasApp/addClient.png");
+    background-size: cover;
+}
+
+#Venta{
+    background: url("/../static/ATodoGasApp/Carro.png");
+    background-size: cover;
+}
+
+
+
+/*********************Scroll********************/
+ 
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  
+  
+  .trigger-menu-wrapper {
+    display: flex;
+    padding: 20px;
+    z-index: 2;
+    background: var(--lightpurple);
+    transition: transform 0.4s;
+  }
+  
+  .page-header .trigger-menu {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: .2em;
+  }
+  
+  .page-header .trigger-menu svg {
+    fill: var(--white);
+    margin-right: 8px;
+    transition: transform 0.3s;
+  }
+
+  .trigger-menu-wrapper {
+    transition: transform 0.4s;
+  }
+   
+  .scroll-down .trigger-menu-wrapper {
+    transform: translate3d(0, -100%, 0);
+  }
+   
+  .scroll-up .trigger-menu-wrapper {
+    transform: none;
+  }
+   
+  .scroll-up:not(.menu-open) .trigger-menu-wrapper {
+    background: var(--lightpurple);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  }
+
+#boton.active svg{
+    transform: rotate(45deg);
+
+}
+
+  /*******************  Footer ******************/
+
+  .page-footer {
+  font-size: 0.85rem;
+  padding: 10px;
+  text-align: right;
+  color: var(--black);
+}
+
+.page-footer span {
+  color: #e31b23;
 }
