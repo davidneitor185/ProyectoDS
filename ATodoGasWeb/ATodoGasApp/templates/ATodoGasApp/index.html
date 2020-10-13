@@ -2,71 +2,86 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-    <link rel="stylesheet" href="{% static 'ATodoGasApp/css/cs_Index.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+  <link rel="stylesheet" href="{% static 'ATodoGasApp/css/cs_Index.css' %}">
 
 </head>
 
+
+
 <body>
-    
-    <nav id = "MenuSuperior" >
-        
-            <ul>
 
-                <!------------Contenido Menu Superior------------------>
-                <li><a href="#" style="text-decoration: none;" >Logout</a></li>
-                <li><a href="#" style="text-decoration: none;" >Usuario</a></li>
-            </ul>
-        
-    </nav>
-    
+  <nav id="MenuSuperior">
 
-    <section id ="Contenido">
-        <div id = "Contenedor" class = "active";>
-            <nav id = "MenuLateral" >
-                    
-                    <div id = logo></div>
-                    <ul>
-                        
+    <ul>
 
-                        <!------------Contenido Menu lateral ----------------->
-                        <li><a href="#" style="text-decoration: none;" >Consultar</a><div class = "logo-Menu" id = "Consulta"></div></li>
-                        <li><a href="#" style="text-decoration: none;" >Crear Cliente</a><div class = "logo-Menu" id = "Cliente"></div></li>
-                        <li><a href="#" style="text-decoration: none;" >Venta</a><div class = "logo-Menu" id = "Venta"></div></li>
-                    
-                </nav>
+      <!------------Contenido Menu Superior------------------>
+      <li><a href="#" style="text-decoration: none;">Logout</a></li>
+      <li><a href="#" style="text-decoration: none;">Usuario</a></li>
+    </ul>
+
+  </nav>
+
+
+  <section id="Contenido">
+    <div id="Contenedor" class="active" ;>
+      <nav id="MenuLateral">
+
+        <div id=logo></div>
+        <ul>
+
+
+          <!------------Contenido Menu lateral ----------------->
+          <li><a href="#" style="text-decoration: none;">Consultar</a>
+            <div class="logo-Menu" id="Consulta"></div>
+          </li>
+          <li><a href="#" style="text-decoration: none;">Crear Cliente</a>
+            <div class="logo-Menu" id="Cliente"></div>
+          </li>
+          <li><a href="#" style="text-decoration: none;">Venta</a>
+            <div class="logo-Menu" id="Venta"></div>
+          </li>
+
+      </nav>
+    </div>
+
+    <!--------- Boton Menu  ------------>
+    <header class="page-header">
+      <nav>
+        <div class="trigger-menu-wrapper">
+          <button id=boton class="trigger-menu">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+            </svg>
+            <span>MENU</span>
+          </button>
         </div>
-        
-        <!--------- Boton Menu  ------------>
-        <header class="page-header">
-            <nav>
-              <div class="trigger-menu-wrapper">
-                <button id = boton class="trigger-menu">
-                  <svg width="20" height="20" viewBox="0 0 24 24">
-                    <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-                  </svg>
-                  <span>MENU</span>
-                </button>
-              </div>
-            </nav>
-          </header>
-          
-      
-        
-    </section>
+      </nav>
+    </header>
 
-    <!----------- Link Script Js ----------->
 
-    <script src= "{% static 'ATodoGasApp/js/js_Index.js' %}" charset="utf-8"></script>
 
-    <!------------ Footer  ----------------->
-    <footer class="page-footer">
-        <small>ATodoGasApp <span>❤</span> by <a href="http://DavidBienGay.com/" target="_blank">DAVS Develop</a>
-        </small>
-      </footer>
-      
+  </section>
+
+  <!----------- Link Script Js ----------->
+
+  <script src="{% static 'ATodoGasApp/js/js_Index.js' %}" charset="utf-8"></script>
+
+  <!------------Contenido Cambiante----------------->
+  {% block content %}
+
+  {% endblock %}
+
+  <!------------ Footer  ----------------->
+  <footer class="page-footer">
+    <small>ATodoGasApp <span>❤</span> by <a href="http://DavidBienGay.com/" target="_blank">DAVS Develop</a>
+    </small>
+  </footer>
+
 </body>
+
 </html>
