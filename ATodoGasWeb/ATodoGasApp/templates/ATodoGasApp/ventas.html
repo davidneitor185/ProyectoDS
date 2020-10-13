@@ -1,5 +1,22 @@
-<html>
-    <body>
-        Ventas
-    </body>
-</html>
+{%extends "ATodoGasApp\index.html" %}
+
+{% load  static %}
+
+
+{% block content %}
+
+<section class = "seccionArriba">
+    <div class = "contenedorSec">
+        <div class = clienteBto>
+            <select class = "comboBoxCliente">
+                <option value="1">DavidGay</option>
+                <option value="2">DavidMuyGay</option>
+            </select>
+            <button class = "botonCliente"></button>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
