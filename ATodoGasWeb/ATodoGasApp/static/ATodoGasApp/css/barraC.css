@@ -6,7 +6,7 @@ body{
 .menu{
     list-style: initial;
     padding: 0;
-    background:darkgrey;
+    background: lightslategray;
     width: 19%;
     max-width: 655px;
     margin: auto;
