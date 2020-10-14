@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="{% static 'ATodoGasApp/css/cs_Index.css' %}">
 
 </head>
-
+  
 <body>
+  
     
     <nav id = "MenuSuperior" >
         
@@ -31,7 +32,6 @@
                     <div id = logo></div>
                     <ul>
                         
-
                         <!------------Contenido Menu lateral ----------------->
                         <li><a href="#" style="text-decoration: none;" >Consultar</a><div class = "logo-Menu" id = "Consulta"></div></li>
                         <li><a href="#" style="text-decoration: none;" >Crear Cliente</a><div class = "logo-Menu" id = "Cliente"></div></li>
@@ -39,6 +39,12 @@
                     
                 </nav>
         </div>
+        
+        
+                    <!------------Contenido Cambiante----------------->
+                    {% block content %}
+          
+                    {% endblock %}
         
         <!--------- Boton Menu  ------------>
         <header class="page-header">
@@ -58,9 +64,12 @@
         
     </section>
 
+    
+
     <!----------- Link Script Js ----------->
 
     <script src= "{% static 'ATodoGasApp/js/js_Index.js' %}" charset="utf-8"></script>
+
 
     <!------------ Footer  ----------------->
     <footer class="page-footer">

@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box; 
+     
+}
+
+
+.form-register{
+    width: 85px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 0px;
+    margin-right: 500px;
+    margin-bottom: 0px;
+    
+}
+
+.controls{
+  border-width: 1px;  
+  border-style: solid;
+  padding: 10px;
+  border-color:gray;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  position: relative;
+  width: 300px;
+  right: 0px;
+
+}
+
+.cliente{
+  background-attachment: unset;
+  background-image: url("/../static/ATodoGasApp/agenda1.jpg");
+  width: 84%;
+  height: 84%;
+  left:16%;
+}
+
+.botton{
+  margin-left: 12%;
+  margin-right: 26%;
+  
+}
+
+
+

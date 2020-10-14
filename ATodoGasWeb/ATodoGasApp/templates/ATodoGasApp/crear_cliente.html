@@ -1,5 +1,47 @@
-<html>
-    <body>
-        Crear Cliente
-    </body>
-</html>
+{% extends "ATodoGasApp/index.html" %}
+{% load static %}
+        {% block content %}
+  
+                <link rel="stylesheet" href="{%static 'ATodoGasApp/css/styleClientes.css' %}">
+                <hr color="grey" size=45>
+                <hr width=83% align ="center">
+                
+            
+            
+                <section class = "cliente">   
+                <h2 style= "color:black; text-align: center;">
+                Gestión de Clientes
+                </h2> 
+                {% include "ATodoGasApp/barraClientes.html" %}
+                <h3 style= "color:darkcyan; text-align: center;">Formulario Registro</h3>
+                    <section class="form-register">
+                        <label style="color: beige;" for="nombre">Nombre: </label>
+                        <input size="55%" class ="controls" type="text" name ="nombre" id=nombre placeholder="Ingrese el nombre">
+                        </br></br>
+                        <label style="color: beige;"for="apellido">Apellido: </label>
+                        <input size="55%" class ="controls" type="text" name ="apellido" id="apellido" placeholder="Ingrese el apellido">
+                        </br></br>
+                        <label style="color: beige;"for="identificacion">Identificación: </label>
+                        <input size="55%" class ="controls" type="search" name ="identificación" id="identificacion" placeholder="Ingrese el id">
+                        </br></br>
+                        <label style="color: beige;"for="telefono">Teléfono: </label>
+                        <input size="55%" class ="controls" type="text" name ="telefono" id="telefono" placeholder="Ingrese el número de teléfono">
+                        </br></br>
+                        <label style="color: beige;"for="direccion">Dirección: </label>
+                        <input size="55%" class ="controls" type="text" name ="direccion" id="direccion" placeholder="Ingrese la dirección">
+                        </br></br>    
+                        
+                    </section>
+                <input size="65%" class ="botton" type="submit" value="volver">
+                <input size="65" class ="botton" type="submit" value="guardar">
+                
+                </section>
+            
+            <footer>
+                <hr width=83% align ="center">
+                <hr color="grey" size=50>
+            </footer>
+            
+        
+        {% endblock %}
+
