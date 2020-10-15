@@ -1,98 +1,125 @@
-
 .seccionArriba{
-background-color: rgba(0, 174, 243, .8);
-position: static;
-z-index: -1;
-width: 100%;
-height: 25%;
-
-
-
-}
+    background-color: rgba(0, 174, 243, .8);
+    
+    float:inline-end;
+    
+    border: 2px solid black;
+        
+    }
 /*
-.seccionArriba .contenedorSec{
-    width: 100%;
-    height: 100%;
-    padding-top: 1%;
-    
-    
-    
-}
 
-.separacion{
-    position: static;
+
+    .row{
+        
+        padding-top: 1%;
+        display: grid;
+        grid-template-columns: 15% 2% 15% 15% 15%;
+        grid-template-rows:  minmax(25px, auto);
+        grid-column-gap: 2%;
+        
+    }
+
+    .row2{
+       
+        padding-top: 1%;
+        display: grid;
+        grid-template-columns: 15% 15% 15%;
+        grid-template-rows:  minmax(25px, auto);
+        grid-column-gap: 2%;
+        
+    }
+
+    #texto{
+        float :right;
+        padding-right: 2%;
+        
+    }
+    
+    /*
+    .seccionArriba .contenedorSec{
+        width: 100%;
+        height: 100%;
+        padding-top: 1%;
+        
+        
+        
+    }
+    
+    .separacion{
+        position: static;
+        display: grid;
+        width: 60%;
+        
+    }
+    
+    .textos{
+        width: 80%;
+        background-color: blanchedalmond;
+    }
+    
+    .items{
+        display: grid;
+        grid-template-columns: 12% 12% 12%;
+        padding: 0.2em;
+        margin: 0.2em;
+        float: left;
+    
+    }
+    .items2{
+        display: grid;
+        grid-template-columns: 12% 12% 12%;
+        padding: 0.2em;
+        margin: 0.2em;
+        float: left;
+    }*/
+    /*
+    .contenedorSec  .clienteBto{
+        width: 12%;
+        height: 18%;
+        
+        float: left;
+        margin-right: 5%;
+    }
+    
+    
+    .botonCliente{
+        margin-left: 2px;
+    }
+    
+    .contenedorSec .camposTextoA{
+        
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap:30%;
+        width: 25%;
+        height: 18%;
+        
+        
+    }
+    .contenedorSec  .camposTextoB{
     display: grid;
-    width: 60%;
+    grid-template-columns: 33% 33% 33%;
+    gap: 30%;
     
-}
-
-.textos{
-    width: 80%;
-    background-color: blanchedalmond;
-}
-
-.items{
-    display: grid;
-    grid-template-columns: 12% 12% 12%;
-    padding: 0.2em;
-    margin: 0.2em;
+    
     float: left;
-
-}
-.items2{
-    display: grid;
-    grid-template-columns: 12% 12% 12%;
-    padding: 0.2em;
-    margin: 0.2em;
-    float: left;
-}*/
-/*
-.contenedorSec  .clienteBto{
-    width: 12%;
-    height: 18%;
+    top: 30%;
+        
+    }
+    .campoVenderdor{
+       
+    }
+    */
+    .contenedorSec  .fechaNotas{
+        position: static;
+        width: 25%;
+        background-color: red;
+        float: right;
+        display: grid;
+        row-gap: 10%;
+        margin-right: 1.2%;
+        
     
-    float: left;
-    margin-right: 5%;
-}
-
-
-.botonCliente{
-    margin-left: 2px;
-}
-
-.contenedorSec .camposTextoA{
-    
-    display: grid;
-    grid-template-columns: 50% 50%;
-    gap:30%;
-    width: 25%;
-    height: 18%;
+    }
     
     
-}
-.contenedorSec  .camposTextoB{
-display: grid;
-grid-template-columns: 33% 33% 33%;
-gap: 30%;
-
-
-float: left;
-top: 30%;
-    
-}
-.campoVenderdor{
-   
-}
-*/
-.contenedorSec  .fechaNotas{
-    position: static;
-    width: 25%;
-    background-color: red;
-    float: right;
-    display: grid;
-    row-gap: 10%;
-    margin-right: 1.2%;
-    
-
-}
-
