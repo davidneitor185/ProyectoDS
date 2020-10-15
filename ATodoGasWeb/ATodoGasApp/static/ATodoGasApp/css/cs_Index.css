@@ -59,13 +59,14 @@ q:before, q:after {
 
 #MenuSuperior {
     width: 100%;
-    height: 8%;
+    height: 7%;
     background-color: rgba(0, 174, 243, .8);
+    
 }
 
 #MenuSuperior ul{
     width: 25%;
-    height: 100%;
+    height: 70%;
     float: right;
     display: table;
 }
@@ -100,7 +101,7 @@ q:before, q:after {
 
 #Contenido {
 width: 100%;
-height: 92%;
+height: 100%;
 background-color: white;
 ;
 }
@@ -112,12 +113,9 @@ background-color: white;
 
 
 #Contenedor {
-    width: 16%;
+    width: 100%;
     height: 100%;
-    transition: transform 1s linear;
-    float: left;
-    left:-20%;
-    transition: all 500ms linear
+   
     
     
     
@@ -270,4 +268,13 @@ button {
 
 .page-footer span {
   color: #e31b23;
+}
+/*******************  paginita ******************/
+.paginita{
+    padding: 0%;
+    margin: 0%;
+    height: auto;
+}
+.miRow{
+    height: 900px;
 }
