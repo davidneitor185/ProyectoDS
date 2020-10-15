@@ -1,5 +1,5 @@
  
-
+/*
 *{
     margin: 0;
     padding: 0;
@@ -94,8 +94,63 @@
   opacity: 0.8;
   text-decoration: none;
 }
+*/
+
+.cliente{
+  background-attachment: fixed;
+  background-image: url("/../static/ATodoGasApp/agenda1.jpg");
+  width: 100%;
+  height: 71%;
+  top: 0;
+ 
+}
+
+.main-section{
+  margin:0 auto;
+}
+.card{
+opacity: .95;
+}
+.card-body{
+  background-color: #d1d3d6;
+  box-shadow: 0px 0px 3px #848484;
+}
+
+label{
+font-weight: bold;
+}
+
+.nav-tabs .nav-item a:not(.active){
+background-color: #d1d3d6;
+}
+
+.nav-tabs{
+border-bottom:0px;
+}
+
+h1{
+  display: inline-block;
+  position: relative;
+  text-align: center;
+
+}
 
 
+h1::after,h1::before{
+  content:"";
+  position:absolute;
+  width: 120px;
+  height: 3px;
+  background-color: black;
+  top: 0.6em;
+}
 
+h1::before{
+  left: -140px;
+}
+
+h1::after{
+  right: -140px;
+}
 
 
