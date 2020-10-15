@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -12,8 +14,10 @@
     padding: 10px;
     margin: auto;
     margin-top: 0px;
-    margin-right: 500px;
     margin-bottom: 0px;
+    margin-right: 500px;
+    margin-left: 420px;
+    
     
 }
 
@@ -26,17 +30,16 @@
   margin-bottom: 0px;
   position: relative;
   width: 300px;
-  right: 0px;
+  
 
 }
 
 .cliente{
-  background-attachment: initial;
+  background-attachment: fixed;
   background-image: url("/../static/ATodoGasApp/agenda1.jpg");
   width: 84%;
   height: 84%;
   left: 16%;
- 
   
   
 }
@@ -59,7 +62,7 @@
   text-decoration: none;
 }
 
-.guardar{
+.crear{
   text-decoration:none;
   padding: 5px;
   font-weight: 600;
@@ -68,13 +71,32 @@
   Border-radius: 4px;
   background-color: lightslategray;
   margin-left: 25%;
-  margin-right: 1%;
+  margin-right: 0%;
 }
 
-.guardar:hover{
+.crear:hover{
   opacity: 0.8;
   text-decoration: none;
 }
+
+.editar{
+  text-decoration:none;
+  padding: 5px;
+  font-weight: 600;
+  font-size: 12px;
+  color:black;
+  Border-radius: 4px;
+  background-color: lightslategray;
+  margin-bottom: initial;
+  margin-left: 10%;
+  margin-right: 1%;
+}
+
+.editar:hover{
+  opacity: 0.8;
+  text-decoration: none;
+}
+
 
 
 
