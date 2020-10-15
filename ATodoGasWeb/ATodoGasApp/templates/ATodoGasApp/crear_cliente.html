@@ -1,19 +1,18 @@
 {% extends "ATodoGasApp/index.html" %}
 {% load static %}
         {% block content %}
-  
-                <hr color="darkcyan" size=45>
-                <hr width=83% align ="center">
-                
-            
-            
+        <link rel="stylesheet" href="{% static 'ATodoGasApp/css/styleClientes.css' %}">
+    
                 <section class = "cliente">   
-                <h1 style= "color:black; left: 243px; font-size: 20px;">
+                <h1 style= "color:black; left: 415px; font-size: 29px;">
                 ***Gestión de Clientes***
                 </h1> 
+                <hr width=100% align ="center">
                 
-                <h3 style= "color:darkcyan; text-align: center;">Formulario Registro</h3>
+                
+                <h3 style= "color:brown; text-align: center;">Formulario Registro</h3>
                     <section class="form-register">
+                        <form id="form1" method="post" action="enviar.sql">
                         <label style="color: beige;" for="nombre">Nombre: </label>
                         <input size="55%" class ="controls" type="text" name ="nombre" id=nombre placeholder="Ingrese el nombre">
                         </br></br>
@@ -29,18 +28,15 @@
                         <label style="color: beige;"for="direccion">Dirección: </label>
                         <input size="55%" class ="controls" type="text" name ="direccion" id="direccion" placeholder="Ingrese la dirección">
                         </br></br>    
-                        
+                        </form> 
                     </section>
                 <input size="65" class ="volver" type="submit" value="volver">
                 <input size="65" class ="crear" type="submit" value="crear">
                 <input size="65" class ="editar" type="submit" value="editar">
                 
                 </section>
+           
             
-            <footer>
-                <hr width=83% align ="center">
-                <hr color="darkcyan" size=50>
-            </footer>
             
         
         {% endblock %}
