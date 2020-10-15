@@ -1,6 +1,6 @@
 .seccionArriba{
     background-color: rgba(0, 174, 243, .8);
-    
+    /*background-image: url("/../static/ATodoGasApp/textura2.jpg");*/    
     float:inline-end;
     
     border-bottom: 2px solid black;
