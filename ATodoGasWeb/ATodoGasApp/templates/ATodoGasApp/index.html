@@ -17,18 +17,18 @@
 
 
 <body>
-
+<!--
   <nav id="MenuSuperior">
 
     <ul>
 
-      <!------------Contenido Menu Superior------------------>
+      
       <li><a href="#" style="text-decoration: none;">Logout</a></li>
       <li><a href="#" style="text-decoration: none;">Usuario</a></li>
     </ul>
 
   </nav>
-
+-->
 
   <section id="Contenido">
     
@@ -38,8 +38,16 @@
         <div class="col-md-2 pr-0 pl-0">
           <div id="Contenedor" class="active" ;>
             <nav id="MenuLateral">
-      
-              <div id=logo></div>
+              
+              <div class="row row-cols-1 justify-content-center">
+                  <div class="col-md ml-3 mt-2">
+                    <img src="{% static 'ATodoGasApp/logo.png' %}" width="90%" height="90%">
+                  </div>
+                  <div class="col ml-5 pl-4">
+                    <font color="white"><h2> A Todo Gas</h2></font>
+                  </div>                                
+              </div>
+              
               <ul>
       
       
@@ -76,11 +84,11 @@
 
   <script src="{% static 'ATodoGasApp/js/js_Index.js' %}" charset="utf-8"></script>
 
-  <!------------ Footer  ----------------->
+  <!------------ Footer  
   <footer class="page-footer">
     <small>David es Gay <span>❤</span> by <a href="http://DavidBienGay.com/" target="_blank">SuperGay</a>
     </small>
-  </footer>
+  </footer>----------------->
   <!-- jQuery and Bootstrap Bundle (includes Popper) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
