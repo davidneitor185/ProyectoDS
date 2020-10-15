@@ -3,9 +3,16 @@
     
     float:inline-end;
     
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
         
     }
+.formularioderecho{
+    background-color: rgb(16, 119, 157);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.342);
+    border-right: 4px solid  rgba(0, 0, 0, 0.342);
+}
 /*
 
 

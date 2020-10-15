@@ -127,16 +127,6 @@ background-color: white;
     position: absolute;
 }
 
-#logo{
-    width: 80%;
-    height: 30%;
-    margin: auto;
-    background-color: chartreuse;
-    background: url("/../static/ATodoGasApp/logo.png") no-repeat;
-    background-position: center;
-    background-size: cover;
-    
-}
 
 
 
@@ -277,3 +267,4 @@ button {
 .miRow{
     height: 900px;
 }
+
