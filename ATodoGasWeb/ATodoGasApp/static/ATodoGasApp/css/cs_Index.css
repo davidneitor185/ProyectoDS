@@ -59,13 +59,23 @@ q:before, q:after {
 
 #MenuSuperior {
     width: 100%;
+<<<<<<< HEAD
     height: 5%;
     background-color: rgba(0, 174, 243, .8);
+=======
+    height: 7%;
+    background-color: rgba(0, 174, 243, .8);
+    
+>>>>>>> David
 }
 
 #MenuSuperior ul{
     width: 25%;
+<<<<<<< HEAD
     height: 100%;
+=======
+    height: 70%;
+>>>>>>> David
     float: right;
     display: table;
 }
@@ -82,10 +92,17 @@ q:before, q:after {
 }
 #MenuSuperior li:last-child{
     border-right: 1px solid rgba(100,100,100,.3);
+<<<<<<< HEAD
 }
 #MenuSuperior li:hover{
     background-color:rgb(0,124,255) ;
 }
+=======
+}
+#MenuSuperior li:hover{
+    background-color:rgb(0,124,255) ;
+}
+>>>>>>> David
 #MenuSuperior a{
     color:rgba(230,230,230,.9);
     font-family: sans-serif;
@@ -100,7 +117,11 @@ q:before, q:after {
 
 #Contenido {
 width: 100%;
+<<<<<<< HEAD
 height: 95%;
+=======
+height: 100%;
+>>>>>>> David
 background-color: white;
 ;
 }
@@ -112,12 +133,18 @@ background-color: white;
 
 
 #Contenedor {
+<<<<<<< HEAD
     width: 16%;
     height: 100%;
     transition: transform 1s linear;
     float: left;
     left:-20%;
     transition: all 500ms linear
+=======
+    width: 100%;
+    height: 100%;
+   
+>>>>>>> David
     
     
     
@@ -128,6 +155,7 @@ background-color: white;
     height: 100%;
     background-color:/*#240D66*/ rgba(0, 174, 243, .6);
     position: absolute;
+<<<<<<< HEAD
 }
 
 #logo{
@@ -150,6 +178,30 @@ background-color: white;
     
     
 }
+=======
+}
+
+#logo{
+    width: 80%;
+    height: 30%;
+    margin: auto;
+    background-color: chartreuse;
+    background: url("/../static/ATodoGasApp/logo.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+
+
+
+#MenuLateral ul{
+    width: 100%;
+    margin-top:7% ;
+    
+    
+}
+>>>>>>> David
 #MenuLateral ul li{
     background-color:/* #240D66*/rgb(0,193,255);
     text-align: center;
@@ -271,3 +323,15 @@ button {
 .page-footer span {
   color: #e31b23;
 }
+<<<<<<< HEAD
+=======
+/*******************  paginita ******************/
+.paginita{
+    padding: 0%;
+    margin: 0%;
+    height: auto;
+}
+.miRow{
+    height: 900px;
+}
+>>>>>>> David
