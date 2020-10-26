@@ -14,8 +14,10 @@
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="button" id="button-addon2"><b>+</b></button>
                 </div>          
-          </div><div class="col">           
-            <input type="text" class="form-control" placeholder="Vendedor">        
+          </div><div class="col"> 
+            {% if user.is_authenticated %}          
+            <input type="text"  class="form-control " readonly placeholder="Vendedor" value={{ user.username }}>       
+            {% endif %} 
           </div>
     
           <div class="col">
@@ -64,7 +66,7 @@
       <input type="text" class="form-control" placeholder="Cantidad">                 
     </div>
     <div class="col">             
-      <input type="text" class="form-control" placeholder="Precio venta">                 
+      <input type="text" class="form-control" readonly placeholder="Precio venta">                 
     </div>
     <div class="col">             
       <input type="text" class="form-control" placeholder="descuento">                 
@@ -107,13 +109,13 @@
             <form>
               <div class="row justify-content-md-center container-fluid pl-4 pr-0 mt-5 pt-5 pb-5">
                 <div class="col-md-12 pb-4">
-                  <input type="text" class="form-control" placeholder="Total a pagar">   
+                  <input type="text" class="form-control" readonly placeholder="Total a pagar">   
                 </div>
                 <div class="col-md-12 pb-4">
                   <input type="text" class="form-control" placeholder="Recibido">   
                 </div>
                 <div class="col-md-12 pb-4">
-                  <input type="text" class="form-control" placeholder="Cambio">   
+                  <input type="text" class="form-control" readonly placeholder="Cambio">   
                 </div>
                 <div class="col-md-12 pb-2">
                   <button type="submit" class="btn btn-dark btn-block">Realizar pago</button>   

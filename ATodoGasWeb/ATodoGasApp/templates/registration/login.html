@@ -18,21 +18,27 @@
     </div>        
       <div class="row justify-content-center pt-3">
           <div class="col-md-4 formulario">
-                <form action="">
-
+                <form action="{% url 'login' %}" method="POST">
+        
+                {% csrf_token %}
                 
-              <div class="form-group text-center">
+                <div class="form-group text-center">
                   <h1 class="text-light">LOGIN</h1>
-              </div>
-              <div class="form-group mx-sm-4 pt-3">
-                  <input type="text" class="form-control" placeholder="Usuario">
-              </div>
-              <div class="form-group mx-sm-4">
-                  <input type="text" class="form-control" placeholder="Contraseña">
-              </div>
-              <div class="form-group mx-sm-4 pt-3 pb-3">
-                  <input type="submit" class="btn btn-block ingresar" value="INGRESAR">
-              </div>
+                
+                <div  class="form-group mx-sm-4 pt-3">
+                 
+                  <td >{{ form.username}}</td>
+                </div>
+                <div  class="form-group mx-sm-4 pt-3">
+                  
+                  <td>{{ form.password }}</td>
+                </div>
+                
+                <div  class="form-group mx-sm-4 pt-3">
+                  <input type="submit" class="btn btn-block ingresar mt-3" value="INGRESAR">
+                </div>
+                </div>
+              
             </form>
           </div>
       </div>

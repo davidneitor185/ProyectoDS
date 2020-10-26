@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/ATodoGasApp/ventas'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 # Application definition
 

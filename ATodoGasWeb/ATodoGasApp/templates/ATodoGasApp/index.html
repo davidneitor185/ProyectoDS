@@ -17,7 +17,7 @@
 
 
 <body>
-<!--
+  <!--
   <nav id="MenuSuperior">
 
     <ul>
@@ -31,45 +31,61 @@
 -->
 
   <section id="Contenido">
-    
+
 
     <div class="paginita">
       <div class="row container-fluid pl-0 pr-0 mr-0 ml-0 miRow">
         <div class="col-md-2 pr-0 pl-0">
           <div id="Contenedor" class="active" ;>
             <nav id="MenuLateral">
-              
+
               <div class="row row-cols-1 justify-content-center">
-                  <div class="col-md ml-3 mt-2">
-                    <img src="{% static 'ATodoGasApp/logo.png' %}" width="90%" height="90%">
-                  </div>
-                  <div class="col ml-5 pl-4">
-                    <font color="white"><h2> A Todo Gas</h2></font>
-                  </div>                                
+                {% if user.is_authenticated %}
+               
+                <button type="button" style="color: #97D5FE;" class="btn btn-info btn-sm btn-block btn-outline-dark pb-1 mb-0">Usuario: {{ user.username }}</button>
+                  
+               
+                {% endif %}
+                
+                <a href="{% url 'logout' %}" style="color: #97D5FE;"  type="button"  class="btn btn-info btn-sm btn-block btn-outline-dark pt-1 mt-0">Cerrar Sesion</a>
+                
+                
+                <div class="col-md ml-3 mt-2">
+                  <img src="{% static 'ATodoGasApp/logo.png' %}" width="90%" height="90%">
+                </div>
+                <div class="col ml-5 pl-4">
+                  <font color="white">
+                    <h2> A Todo Gas</h2>
+                  </font>
+                </div>
               </div>
-              
+
               <ul>
-      
-      
+
+
                 <!------------Contenido Menu lateral ----------------->
                 <li><a href="#" style="text-decoration: none;">Consultar</a>
                   <div class="logo-Menu" id="Consulta"></div>
                 </li>
-                <li><a href="#" style="text-decoration: none;">Crear Cliente</a>
+                <li><a href="./crear_cliente" style="text-decoration: none;">Crear Cliente</a>
                   <div class="logo-Menu" id="Cliente"></div>
                 </li>
-                <li><a href="#" style="text-decoration: none;">Venta</a>
+                <li><a href="./ventas" style="text-decoration: none;">Venta</a>
                   <div class="logo-Menu" id="Venta"></div>
                 </li>
-      
+
             </nav>
+
           </div>
+          
         </div>
         <div class="col-md-10 pl-0 pr-0">
+          
           <!--------- Contenido Cambiante --------->
           {% block content %}
 
           {% endblock %}
+          
         </div>
       </div>
     </div>
@@ -97,5 +113,6 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
 </body>
+
 
 </html>

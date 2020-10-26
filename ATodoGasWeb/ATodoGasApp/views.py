@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse
 
 # Create your views here.
 def login(request):
-    return render(request, 'ATodoGasApp/login.html')
+    return render(request, 'registration/login.html')
 
 def home(request):
     return render(request, 'ATodoGasApp/home.html')
