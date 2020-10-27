@@ -8,6 +8,7 @@ def home(request):
     return render(request, 'ATodoGasApp/home.html')
 
 def ventas(request):
+
     return render(request, 'ATodoGasApp/ventas.html')
 
 def consultas(request):
