@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ATodoGasApp',
+    'ATodoGasWeb'
     #'src',
 ]
 
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'ATodoGasWeb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dcjhdbdssuj1m1',
+        'USER': 'ogletouqtdoanm',
+        'PASSWORD': '5783591bb6716cf2c1b491f8823eedeba0ac45d64b69e6743c816e7c96e1d020',
+        'HOST': 'ec2-35-171-31-33.compute-1.amazonaws.com',
+        'DATABASE_PORT': '5432',
     }
 }
 
@@ -105,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-co'
 
 TIME_ZONE = 'UTC'
 
