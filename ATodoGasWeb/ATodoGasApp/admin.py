@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from ATodoGasApp.models import *
+from .models import *
 
 # Register your models here.
 
