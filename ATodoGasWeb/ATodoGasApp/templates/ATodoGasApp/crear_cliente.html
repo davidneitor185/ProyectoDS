@@ -1,5 +1,8 @@
 {% extends "ATodoGasApp/index.html" %}
 {% load static %}
+    
+
+
 {% block content %}
     <!DOCTYPE html>   
        
@@ -30,12 +33,12 @@
             <link rel="stylesheet" type="text/css" href="{% static 'ATodoGasApp/css/styleClientes.css' %}">
                 -->
            
-            <script type="text/javascript"> 
+            <!--<script type="text/javascript"> 
             $(document).ready(function() {
                 $('#userList').DataTable();
             } );
             
-            </script>
+            </script>-->
             
 
             <head>
@@ -58,7 +61,10 @@
                 <!-- Lo relacionado con Datatables-->
                 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-                 
+                {% block javascript %}
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                <script src="{% static 'ATodoGasApp/js/eliminar_cliente.js' %}"></script>
+            {% endblock %}
         </head>
         <body>  
 
@@ -72,7 +78,7 @@
 
             <!-- Funcionamiento de tarjetas aqui--> 
                 <section class = "cliente">
-                <h1 class "titulo" style= "color:black; left: 367px;">
+                <h1 class = "titulo" style= "color:  #0E698A; left: 367px;">
                     Sistema De Servicio Al Cliente
                     </h1> 
                 <div class="container">
@@ -94,7 +100,7 @@
                                     <div class="card-body">
                                         <form class="form" method="POST" action="" role="form" autocomplete="off">
                                             <div class="form-group row ml-3">
-                                                {% csrf_token %}    
+                                               {% csrf_token %}  
                                                 <table>
                                                     
                                                     {{form.as_table}}
@@ -157,45 +163,37 @@
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Apellido</th>
-                                                    <th scope="col">Identificación</th>
                                                     <th scope="col">Teléfono</th>
+                                                    <th scope="col">Email</th>
                                                     <th scope="col">Dirección</th>
+                                                    <th scope="col">Municipio</th>
+                                                    <th scope="col">Identificación</th>
+                                                    <th scope="col">Opciones</th>
+                                                    
                                                     <th></th>
                                                     <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Santiago</td>
-                                                    <td>Gomez</td>
-                                                    <td>N.N</td>
-                                                    <td>123123556</td>
-                                                    <td>Calle Siempre viva #32-12</td>
-                                                    <td>
-                                                        <a href="#"><i class="fas fa-edit"></i></a> 
-                                                    </td>
-                                                    <td>
-                                                        <a href="#"><i class="fas fa-user-times"></i></a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                                <tbody>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Victor</td>
-                                                        <td>Gomez</td>
-                                                        <td>N.N</td>
-                                                        <td>111122</td>
-                                                        <td>Calle Siempre viva #32-13</td>
-                                                        <td>
-                                                            <a href="#"><i class="fas fa-edit"></i></a> 
-                                                        </td>
-                                                        <td>
-                                                            <a href="#"><i class="fas fa-user-times"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
+                                                  
+                                                {% for p in persona %}
+                                                    
+                                                        <tr>
+                                                            <th scope="row">{{p.idpersona}}</th>
+                                                            <td>{{ p.nombre }}</td>
+                                                            <td>{{ p.apellido }}</td>
+                                                            <td>{{ p.telefono }}</td>
+                                                            <td>{{ p.email }}</td>
+                                                            <td>{{ p.direccion }}</td>
+                                                            <td>{{ p.municipio }}</td>
+                                                            <td>{{ p.identificacion }}</td>
+                                                            <td><a  class="btn btn-primary" href="./modificar_cliente/{{p.idpersona}}"target="_blank" >Actualizar</a>
+                                                                <a class="btn btn-danger" href="#" onclick="confimarEliminacion({{p.idpersona}})">Borrar</a>
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                {% endfor %}
+                                            </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -204,15 +202,15 @@
                         </div>
                     </div>
                 </div>
-                <h3 class "titulo" style= "color:black; left: 884px;">
+                <h3 class  = "titulo" style= "color: #0E698A; left: 884px;">
                     ATodoGas
                     </h3> 
-                    <script> 
+                    <!--<script> 
                         $(document).ready( function () {
                             $('.mydataTable').DataTable();
                         } );
                         
-                        </script> 
+                        </script> -->
             </section>
             
 

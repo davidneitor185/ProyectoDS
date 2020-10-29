@@ -7,6 +7,10 @@ from ATodoGasApp.models import *
 class personaAdmin (admin.ModelAdmin):
     list_display=("nombre", "apellido", "identificacion")
     search_fields=("nombre", "apellido", "identificacion")
+
+class clienteAdmin (admin.ModelAdmin):
+    list_display=("idcliente","idpersona")
+    search_fields=("idcliente","idpersona")
     
 class productoAdmin (admin.ModelAdmin):
     list_display=("nombre_produc", "codigo", "idcategoria")
@@ -27,7 +31,7 @@ class detalleventaAdmin (admin.ModelAdmin):
 admin.site.register(Usuario, usuarioAdmin)
 admin.site.register(Producto, productoAdmin)
 admin.site.register(Inventario)
-admin.site.register(Cliente)
+admin.site.register(Cliente, clienteAdmin)
 admin.site.register(Proveedor)
 admin.site.register(Venta, ventaAdmin)
 admin.site.register(Detalleventa)

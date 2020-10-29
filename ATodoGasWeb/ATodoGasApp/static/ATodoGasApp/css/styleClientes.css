@@ -137,16 +137,17 @@ h1{
   display: inline-block;
   position: relative;
   text-align: center;
-  font-family: tangerine;
+  font-family:Impact, sans-serif;
   top: 0.6em;
   height: 100px;
+  color: #97D5FE;
 }
 
 h3{
   display: inline-block;
   position: relative;
   text-align: center;
-  font-family: tangerine;
+  font-family:Impact, sans-serif;
   top: 0.6em;
   height: 100px;
 }
