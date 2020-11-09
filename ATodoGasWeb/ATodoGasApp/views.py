@@ -15,23 +15,23 @@ def home(request):
 
 
 def ventas(request):
-   
     return render(request, 'ATodoGasApp/ventas.html')
 
 def consultar_cliente(request, idpersona):
-    #persona = Persona.objects.all()
-    #existe=False
-    #for p in persona:
-     #   if p.identificacion == idpersona:
-     #       existe=True
+    persona = Persona.objects.all()
+    existe=False
+    for p in persona:
+        if p.identificacion == idpersona:
+            existe=True
 
-    #if existe:
-     #   messages.success(request,idpersona)
-    #    return redirect(to= "Ventas")
-    #else:
-        #messages.success(request,p.identificacion)
-    messages.success(request,idpersona)     
-    return redirect(to="Crear cliente")
+    if existe:
+        messages.success(request,"Este cliente se encuentra en nuestra base de datos")
+        
+        return redirect(to= "Ventas")
+    else:
+        messages.error(request, "Este cliente no se encuentra en nuestra base de datos, porfavor creelo")
+             
+        return redirect(to="Crear cliente")
 
 def consultas(request):
     return render(request, 'ATodoGasApp/consultas.html')

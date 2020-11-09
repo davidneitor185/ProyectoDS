@@ -17,13 +17,12 @@
     <form>
         <div class="row align-items-center">
         <div class="col input-group mb-3 pt-3 pl-4">        
-                <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
+                <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2" id="id_cliente">
                 <div class="input-group-append">
                 
+                            
               
-              
-              
-                <a  class="btn btn-primary" href="#" onclick="consultar_cliente()" target="_blank" ><b>+</b></a>
+                <a  class="btn btn-primary" onclick="consultar_cliente()" target="_blank"><b>+</b></a>
                 </div>          
           </div><div class="col"> 
             {% if user.is_authenticated %}          
