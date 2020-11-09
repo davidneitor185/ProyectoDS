@@ -4,15 +4,26 @@
 
 
 {% block content %}
+  <!DOCTYPE html>
+  <head>
 <link rel="stylesheet" href="{% static 'ATodoGasApp/css/cs_Ventas.css' %}">
-
+{% block javascript %}
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="{% static 'ATodoGasApp/js/consultar_cliente.js' %}"></script>
+{% endblock %}
+</head>
+<body>
 <section class = "seccionArriba">
     <form>
         <div class="row align-items-center">
         <div class="col input-group mb-3 pt-3 pl-4">        
-                <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
                 <div class="input-group-append">
-                  <button class="btn btn-primary" type="button" id="button-addon2"><b>+</b></button>
+                
+              
+              
+              
+                <a  class="btn btn-primary" href="#" onclick="consultar_cliente()" target="_blank" ><b>+</b></a>
                 </div>          
           </div><div class="col"> 
             {% if user.is_authenticated %}          
@@ -128,4 +139,6 @@
     </div>
   </form>
 </section>
+</body>
+</html> 
 {% endblock %}

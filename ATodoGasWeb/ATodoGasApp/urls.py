@@ -10,6 +10,6 @@ urlpatterns = [
     path('index',views.index,name= "Index"),
     path('modificar_cliente/<idpersona>/',views.modificar_cliente,name= "Modificar cliente"),
     path('eliminar_cliente/<idpersona>/',views.eliminar_cliente,name= "Eliminar cliente"),
-    
+    path('consultar_cliente/<idpersona>/',views.consultar_cliente,name= "Consultar cliente"),
     
 ]
