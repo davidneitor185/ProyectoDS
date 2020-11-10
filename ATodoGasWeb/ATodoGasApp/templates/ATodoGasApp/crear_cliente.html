@@ -32,9 +32,7 @@
                 href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
                 <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
         
-                <!-- Lo relacionado con Datatables-->
-                <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-
+               
                 {% block javascript %}
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
                 <script src="{% static 'ATodoGasApp/js/eliminar_cliente.js' %}"></script>
@@ -51,7 +49,7 @@
              
 
             <!-- Funcionamiento de tarjetas aqui--> 
-                <section class = "cliente">
+            <section class = "cliente">
                 <h1 class = "titulo" style= "color:  #0E698A; left: 367px;">
                     Sistema De Servicio Al Cliente
                     </h1> 
@@ -102,7 +100,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered table-hover table-striped mydataTable">
+                                            <table id="tablita" class="table table-bordered table-hover table-striped mydataTable">
                                                 <thead class="thead-light">
                                                 <tr>
                                                     <th scope="col">#</th>
@@ -114,9 +112,6 @@
                                                     <th scope="col">Municipio</th>
                                                     <th scope="col">Identificación</th>
                                                     <th scope="col">Opciones</th>
-                                                    
-                                                    <th></th>
-                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -165,43 +160,7 @@
         </html> 
 
         {% endblock %}
-        <!---<link rel="stylesheet" href="{% static 'ATodoGasApp/css/styleClientes.css' %}">--->
         
-        
-        <!--
-                <section class = "cliente">   
-                <h1 style= "color:black; left: 415px; font-size: 29px;">
-                ***Gestión de Clientes***
-                </h1> 
-                <hr width=100% align ="center">
-                
-                
-                <h3 style= "color:brown; text-align: center;">Formulario Registro</h3>
-                    <section class="form-register">
-                        <form id="form1" method="post" action="enviar.sql">
-                        <label style="color: beige;" for="nombre">Nombre: </label>
-                        <input size="55%" class ="controls" type="text" name ="nombre" id=nombre placeholder="Ingrese el nombre">
-                        </br></br>
-                        <label style="color: beige;"for="apellido">Apellido: </label>
-                        <input size="55%" class ="controls" type="text" name ="apellido" id="apellido" placeholder="Ingrese el apellido">
-                        </br></br>
-                        <label style="color: beige;"for="identificacion">Identificación: </label>
-                        <input size="55%" class ="controls" type="search" name ="identificación" id="identificacion" placeholder="Ingrese el id">
-                        </br></br>
-                        <label style="color: beige;"for="telefono">Teléfono: </label>
-                        <input size="55%" class ="controls" type="text" name ="telefono" id="telefono" placeholder="Ingrese el número de teléfono">
-                        </br></br>
-                        <label style="color: beige;"for="direccion">Dirección: </label>
-                        <input size="55%" class ="controls" type="text" name ="direccion" id="direccion" placeholder="Ingrese la dirección">
-                        </br></br>    
-                        </form> 
-                    </section>
-                <input size="65" class ="volver" type="submit" value="volver">
-                <input size="65" class ="crear" type="submit" value="crear">
-                <input size="65" class ="editar" type="submit" value="editar">
-                
-                </section>
-           --->
            
             
             
