@@ -141,6 +141,7 @@ class Venta(models.Model):
     idusuario = models.IntegerField()
     totalventa = models.FloatField(blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
+    formadepago = models.CharField(max_length=50, blank=True, null=True)
     estado = models.CharField(max_length=30, blank=True, null=True)
     idfactura = models.IntegerField(blank=True, null=True)
     iva = models.BooleanField(blank=True, null=True)

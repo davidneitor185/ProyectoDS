@@ -113,17 +113,16 @@
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    {% if messages is success %}
-      {% for m in messages %}
+    {% if messages %}
+      {%for m in messages%}
           <script>
           Swal.fire({
             "tittle": "ojito",
             "text": "{{m}}",
-            "icon": "success"
+            "icon": "info"
           })
           </script>
       {% endfor %}
-    
     {% endif %} 
 </body>
 

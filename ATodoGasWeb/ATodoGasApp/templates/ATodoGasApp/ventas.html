@@ -10,73 +10,144 @@
 {% block javascript %}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="{% static 'ATodoGasApp/js/consultar_cliente.js' %}"></script>
+  <script src="{% static 'ATodoGasApp/js/consultar_producto.js' %}"></script>
 {% endblock %}
 </head>
 <body>
 <section class = "seccionArriba">
-    <form>
+    <form method="POST">
         <div class="row align-items-center">
-        <div class="col input-group mb-3 pt-3 pl-4">        
-                <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2" id="id_cliente">
-                <div class="input-group-append">
-                
-                            
-              
-                <a  class="btn btn-primary" onclick="consultar_cliente()" target="_blank"><b>+</b></a>
-                </div>          
+        {% csrf_token %}
+        <div class="col input-group mb-3 pt-3 pl-4">
+        {% if id_cliente%}        
+                <input type="text" class="form-control" value="{{id_cliente}}" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
+                <div class="input-group-append">              
+                <button  class="btn btn-primary" type="submit" target="_blank"><b>+</b></button>
+                </div>
+        {% else %}
+                <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
+                <div class="input-group-append">              
+                <button  class="btn btn-primary" type="submit" target="_blank"><b>+</b></button>
+                </div>
+        {% endif %}          
           </div><div class="col"> 
             {% if user.is_authenticated %}          
-            <input type="text"  class="form-control " readonly placeholder="Vendedor" value={{ user.username }}>       
+            <input type="text"  class="form-control " readonly placeholder="Vendedor" name= "nombre_usuario" value={{ user.username }}>       
             {% endif %} 
           </div>
     
           <div class="col">
-            <input type="text" class="form-control" placeholder="N° Venta">
+          {% if nventa %}
+            <input type="text" class="form-control" name="n_venta" value="{{nventa}}">
+          {% else %}
+            <input type="text" class="form-control" name="n_venta" placeholder="N° Venta">
+          {% endif %}
           </div>
             
           
-          <div class="col pr-4">             
-            <input type="text" class="form-control" placeholder="Fecha">                 
+          <div class="col pr-4"> 
+            {% if fecha %}
+            <input class="form-control" type="date" value="{{fecha}}" name="fecha">  
+            {% else %}
+            <input class="form-control" type="date" placeholder="fecha de venta" name="fecha">
+            {% endif %} 
           </div>
         </div>
         <div class="row align-items-start">
             <div class="col pl-4">
-                <input type="text" class="form-control" placeholder="Factura"> 
+              {% if id_factura %}
+                <input type="text" class="form-control" value="{{id_factura}}" name="id_factura">
+              {% else %}
+               <input type="text" class="form-control" placeholder="n° factura" name="id_factura">
+              {% endif %} 
             </div>
             <div class="col">
-                <select id = "comboBoxFormaPago" class = "form-control" >
+              {% if forma_pago == '1' %}
+                <select id = "comboBoxFormaPago" class = "form-control"  name="forma_pago">
+                    <option>Forma de pago...</option>
+                    <option value="1" selected>Efectivo</option>
+                    <option value="2">Tarjeta de Credito</option>
+                </select>
+              {% elif forma_pago == '2' %}
+                <select id = "comboBoxFormaPago" class = "form-control"  name="forma_pago">
+                    <option>Forma de pago...</option>
+                    <option value="1">Efectivo</option>
+                    <option value="2" selected>Tarjeta de Credito</option>
+                </select>
+              {% else %}
+                <select id = "comboBoxFormaPago" class = "form-control" name="forma_pago">
                     <option selected>Forma de pago...</option>
                     <option value="1">Efectivo</option>
                     <option value="2">Tarjeta de Credito</option>
                 </select>
+              {% endif %} 
+
             </div>
             <div class="col">
-                <select id = "comboBoxIva" class = "form-control">
+              {% if iva == '1' %}
+                <select id = "comboBoxIva" class = "form-control" name="iva">
+                    <option value="1" selected>IVA</option>
+                    <option value="2">No IVA</option>
+                </select>
+              {% elif iva == '2'%}
+                <select id = "comboBoxIva" class = "form-control" name="iva">
+                    <option value="1">IVA</option>
+                    <option value="2" selected>No IVA</option>
+                </select>
+              {% else %}
+                <select id = "comboBoxIva" class = "form-control" name="iva">
                     <option value="1">IVA</option>
                     <option value="2">No IVA</option>
                 </select>
+              {% endif %}
             </div>
-            <div class="col pr-4">
-                <textarea class = "col align-self-end" rows="4" cols="12" placeholder="Nota"></textarea>
+            <div class="col pr-4 pb-3">
+              {% if estado == '1'%}
+                <select id = "comboBoxIva" class = "form-control" name="estado">
+                    <option value="1" selected>Pagado</option>
+                    <option value="2">Pendiente</option>
+                </select>
+              {% elif estado == '2'%}
+                <select id = "comboBoxIva" class = "form-control" name="estado">
+                    <option value="1">Pagado</option>
+                    <option value="2" selected>Pendiente</option>
+                </select>
+              {% else %}
+                <select id = "comboBoxIva" class = "form-control" name="estado">
+                    <option value="1">Pagado</option>
+                    <option value="2">Pendiente</option>
+                </select>
+              {% endif%}           
             </div>
 
           </div>
-      </form>
+      
     </section>
 <section class = "seccionIntermedia">
-<form>
+
   <div class="row align-items-center">
-    <div class="col input-group mb-3 pt-3 pl-4">        
-      <input type="text" class="form-control" name="codProd" placeholder="Codigo producto" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="col input-group mb-3 pt-3 pl-4"> 
+      
+
+      {% if codigo_p%}
+      <input type="text" class="form-control" id="codigo_producto" name="codProd" value="{{codigo_p}}" aria-label="Recipient's username" aria-describedby="button-addon2">
+      {% else %}
+      <input type="text" class="form-control" id="codigo_producto" name="codProd" placeholder="Codigo producto" aria-label="Recipient's username" aria-describedby="button-addon2">
+      {% endif %}
+      
       <div class="input-group-append">
-        <button class="btn btn-primary" type="submit" id="button-addon2"><b>+</b></button>
+        <button class="btn btn-primary" type="submit"> <b>+</b></button> 
       </div>
     </div>
     <div class="col">             
       <input type="text" class="form-control" placeholder="Cantidad">                 
     </div>
-    <div class="col">             
-      <input type="text" class="form-control" readonly placeholder="Precio venta">                 
+    <div class="col">
+    {% if precioventa%}             
+      <input type="text" class="form-control" value="{{precioventa}}" readonly id="precio_venta" placeholder="Precio venta">
+    {% else %}
+      <input type="text" class="form-control" readonly id="precio_venta" placeholder="Precio venta">
+    {% endif %}                
     </div>
     <div class="col">             
       <input type="text" class="form-control" placeholder="descuento">                 
