@@ -7,10 +7,9 @@
   <!DOCTYPE html>
   <head>
 <link rel="stylesheet" href="{% static 'ATodoGasApp/css/cs_Ventas.css' %}">
+
 {% block javascript %}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="{% static 'ATodoGasApp/js/consultar_cliente.js' %}"></script>
-  <script src="{% static 'ATodoGasApp/js/consultar_producto.js' %}"></script>
 {% endblock %}
 </head>
 <body>
@@ -21,15 +20,13 @@
         <div class="col input-group mb-3 pt-3 pl-4">
         {% if id_cliente%}        
                 <input type="text" class="form-control" value="{{id_cliente}}" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
-                <div class="input-group-append">              
-                <button  class="btn btn-primary" type="submit" target="_blank"><b>+</b></button>
-                </div>
+                
         {% else %}
                 <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
-                <div class="input-group-append">              
-                <button  class="btn btn-primary" type="submit" target="_blank"><b>+</b></button>
-                </div>
-        {% endif %}          
+        {% endif %}
+        <div class="input-group-append">              
+                <button  class="btn btn-primary" name='consultar_cliente' type="submit"><i class="fa fa-search-plus"></i></button>
+                </div>          
           </div><div class="col"> 
             {% if user.is_authenticated %}          
             <input type="text"  class="form-control " readonly placeholder="Vendedor" name= "nombre_usuario" value={{ user.username }}>       
@@ -123,45 +120,63 @@
           </div>
       
     </section>
+    
 <section class = "seccionIntermedia">
-
+  {% csrf_token %}
   <div class="row align-items-center">
     <div class="col input-group mb-3 pt-3 pl-4"> 
       
 
-      {% if codigo_p%}
-      <input type="text" class="form-control" id="codigo_producto" name="codProd" value="{{codigo_p}}" aria-label="Recipient's username" aria-describedby="button-addon2">
+      {% if codProd%}
+      <input type="text" class="form-control" id="codigo_producto" name="codProd" value="{{codProd}}" aria-label="Recipient's username" aria-describedby="button-addon2">
       {% else %}
       <input type="text" class="form-control" id="codigo_producto" name="codProd" placeholder="Codigo producto" aria-label="Recipient's username" aria-describedby="button-addon2">
       {% endif %}
       
       <div class="input-group-append">
-        <button class="btn btn-primary" type="submit"> <b>+</b></button> 
+        <button class="btn btn-primary" name='consultar_producto' type="submit"> <b><i class="fa fa-search-plus"></i></b></button> 
       </div>
     </div>
-    <div class="col">             
-      <input type="text" class="form-control" placeholder="Cantidad">                 
+    <div class="col"> 
+    {% if cantidad %}            
+      <input type="text" class="form-control" name="cantidad" value="{{cantidad}}">
+    {% else %} 
+      <input type="text" class="form-control" name="cantidad" placeholder="Cantidad">
+    {% endif %}             
     </div>
     <div class="col">
-    {% if precioventa%}             
-      <input type="text" class="form-control" value="{{precioventa}}" readonly id="precio_venta" placeholder="Precio venta">
+    {% if precio_venta%}             
+      <input type="text" class="form-control" value="{{precio_venta}}" name="precio_venta" readonly id="precio_venta" placeholder="Precio venta">
     {% else %}
-      <input type="text" class="form-control" readonly id="precio_venta" placeholder="Precio venta">
+      <input type="text" class="form-control" readonly id="precio_venta" name="precio_venta" placeholder="Precio venta">
     {% endif %}                
     </div>
-    <div class="col">             
-      <input type="text" class="form-control" placeholder="descuento">                 
+    <div class="col"> 
+      
+      <div class="input-group mb-3 pt-3">
+        <div class="input-group-append">
+    <span class="input-group-text"><i class="fa fa-tag font-weight-bold"></i></span>
+      </div>
+    
+    {% if descuento %}             
+      <input type="text"  class="form-control" name="descuento" value="{{descuento}}"> 
+    {% else %} 
+      <input type="text"  class="form-control" name="descuento" placeholder="descuento"> 
+    {% endif %}
+    
+      </div>                
     </div>
     <div class="col pr-5">             
-      <button type="submit" class="btn btn-dark btn-block">Agregar</button>                
+      <button type="submit" class="btn btn-dark btn-block" name='agregar'>Agregar</button>                
     </div>
   </div>
-</form>
 </section>
 
+
 <section class = "seccionInferior">
-  <form>
-    <div class="row">
+  
+    
+    <div class="row justify-content-md-center">
       <div class="col-9 pl-5">
         <table class="table">
           <thead class="thead-dark">
@@ -171,17 +186,23 @@
               <th scope="col">Cantidad</th>
               <th scope="col">Precio</th>
               <th scope="col">Total</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>pipa de gas</td>
-              <td>2</td>
-              <td>70000</td>
-              <td>140000</td>
-            </tr>
-            
+          {% if tabla_cont %}
+            {% for v in tabla_cont%}
+              <tr>
+                <input value="{{v.codigo}}" readonly name="id_row">
+                <td >{{v.codigo}}</td>
+                <td>{{v.nombreprod}}</td>
+                <td>{{v.cantidad}}</td>
+                <td>{{v.precio}}</td>
+                <td>{{v.total}}</td>
+                <td class"col pt-2"><button class="btn btn-danger" name="borrar" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button><td>
+              </tr>
+              {% endfor %}
+          {% endif %}  
           </tbody>
         </table>
       </div>
