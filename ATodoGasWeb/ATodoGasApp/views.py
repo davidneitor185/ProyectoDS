@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .form import ClienteForm
+from .form import ClienteForm,VentaForm
 from .models import *
 from django.contrib import messages
 
@@ -79,6 +79,7 @@ def ventas(request):
             "cambio":cambio.cambio,
             "recibido":recibido
         }
+       
 
         if 'consultar_cliente' in request.POST:
             print("consultar cliente")
@@ -177,6 +178,80 @@ def ventas(request):
                     total_a_pagar.total += r.total
             data["total_a_pagar"] = total_a_pagar.total
             return render(request, 'ATodoGasApp/ventas.html', data)
+        elif 'pagar' in request.POST:
+            venta = Venta()
+            
+            
+                        
+            if id_cliente != '':
+                venta.idcliente = int(id_cliente)
+            else: 
+                venta.idcliente = ''
+            
+
+            nombreuser= request.POST["nombre_usuario"]
+            if nombreuser != '':
+                idusuario = Usuario.objects.get(
+                    nombreusuario=nombreuser).idusuario
+                venta.idusuario = int(idusuario)
+            else:
+                venta.idusuario = ''
+            
+            if total_a_pagar != '':
+                venta.totalventa = float(total_a_pagar.total)
+            else:
+                venta.totalventa=''
+            
+            
+            venta.fecha = fecha
+
+            if forma_pago == '1':
+                venta.formadepago = "Efectivo"
+            elif forma_pago == '2':
+                venta.formadepago = "Tarjeta de Credito"
+            else: venta.formadepago = ""
+            
+            if estado == '1':
+                venta.estado = "Pagado"
+            else: venta.estado = "Pendiente"
+            if id_factura != '': 
+                venta.idfactura = int(id_factura)
+            else : 
+                venta.idfactura = None
+            if iva == '1':
+                venta.iva = True
+            else: venta.iva = False
+
+            
+            if venta.idcliente != '' and venta.idusuario!= '' and venta.totalventa != '' and venta.fecha!= '' and venta.formadepago!= '':
+                messages.success(
+                    request, "Se ha Finalizado la venta Exitosamente ")
+                
+                venta.save()
+                print("voy pal for /o/")
+                
+                
+                for r in rowsventas:
+                    detalleventa = Detalleventa()
+                    detalleventa.idventa = venta
+                    detalleventa.idproducto = Producto.objects.get(codigo=r.codigo)
+                    detalleventa.cantidad = r.cantidad
+                    detalleventa.preciouni = float(r.precio)
+                    detalleventa.total = float(r.total)                    
+                    detalleventa.save()
+                rowsventas.clear()
+                print("ya salí /o/")
+            else: 
+                messages.error(
+                    request, 'Ingrese  Todos los campos ')
+
+            
+                
+                
+
+               
+            
+
 
     return render(request, 'ATodoGasApp/ventas.html',{"tabla_cont": rowsventas})
 

@@ -25,8 +25,8 @@ class ventaAdmin (admin.ModelAdmin):
     search_fields=("idventa", "idcliente", "idusuario")
     
 class detalleventaAdmin (admin.ModelAdmin):
-    list_display=("idventa", "codigoprod")
-    search_fields=("idventa", "codigoprod")
+    list_display=("idventa", "idprod")
+    search_fields=("idventa", "idprod")
 
 admin.site.register(Usuario, usuarioAdmin)
 admin.site.register(Producto, productoAdmin)
