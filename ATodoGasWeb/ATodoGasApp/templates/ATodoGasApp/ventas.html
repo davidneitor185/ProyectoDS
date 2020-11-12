@@ -10,6 +10,7 @@
 
 {% block javascript %}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="{% static 'ATodoGasApp/js/eliminar_filap.js' %}"></script>
 {% endblock %}
 </head>
 <body>
@@ -134,7 +135,7 @@
       {% endif %}
       
       <div class="input-group-append">
-        <button class="btn btn-primary" name='consultar_producto' type="submit"> <b><i class="fa fa-search-plus"></i></b></button> 
+        <button class="btn btn-primary" name='consultar_producto' type="submit" > <b><i class="fa fa-search-plus"></i></b></button> 
       </div>
     </div>
     <div class="col"> 
@@ -146,9 +147,9 @@
     </div>
     <div class="col">
     {% if precio_venta%}             
-      <input type="text" class="form-control" value="{{precio_venta}}" name="precio_venta" readonly id="precio_venta" placeholder="Precio venta">
+      <input type="text" class="form-control" value="{{precio_venta}}" name="precio_venta" readonly id="precio_venta" placeholder="Precio venta" >
     {% else %}
-      <input type="text" class="form-control" readonly id="precio_venta" name="precio_venta" placeholder="Precio venta">
+      <input type="text" class="form-control" readonly id="precio_venta" name="precio_venta" placeholder="Precio venta" >
     {% endif %}                
     </div>
     <div class="col"> 
@@ -159,9 +160,9 @@
       </div>
     
     {% if descuento %}             
-      <input type="text"  class="form-control" name="descuento" value="{{descuento}}"> 
+      <input type="text"  class="form-control" name="descuento" value="{{descuento}}" > 
     {% else %} 
-      <input type="text"  class="form-control" name="descuento" placeholder="descuento"> 
+      <input type="text"  class="form-control" name="descuento" placeholder="descuento" > 
     {% endif %}
     
       </div>                
@@ -190,41 +191,54 @@
             </tr>
           </thead>
           <tbody>
+         
           {% if tabla_cont %}
             {% for v in tabla_cont%}
-              <tr>
-                <input value="{{v.codigo}}" readonly name="id_row">
+              <tr >
                 <td >{{v.codigo}}</td>
                 <td>{{v.nombreprod}}</td>
                 <td>{{v.cantidad}}</td>
                 <td>{{v.precio}}</td>
                 <td>{{v.total}}</td>
-                <td class"col pt-2"><button class="btn btn-danger" name="borrar" type="submit"><i class="fa fa-trash" aria-hidden="true"></i></button><td>
+                <td ><button class="btn btn-danger"  type="submit" name='borrar' onclick="confimarEliminacionfila({{v.id}})" target="_blank"><i class="fa fa-trash" aria-hidden="true" name="borrar"></i></button><td>
               </tr>
               {% endfor %}
-          {% endif %}  
+          {% endif %}
+          
           </tbody>
         </table>
       </div>
       <div class="col-3 pr-5">
         <section class="formularioderecho">
-            <form>
+            
               <div class="row justify-content-md-center container-fluid pl-4 pr-0 mt-5 pt-5 pb-5">
                 <div class="col-md-12 pb-4">
-                  <input type="text" class="form-control" readonly placeholder="Total a pagar">   
+                {% if total_a_pagar %}
+                  <input type="text" class="form-control" value="$ {{total_a_pagar}}" name='total_a_pagar' readonly placeholder="Total a pagar">
+                {% else %}
+                   <input type="text" class="form-control" name='total_a_pagar' readonly placeholder="Total a pagar">
+                {% endif %}
                 </div>
                 <div class="col-md-12 pb-4">
-                  <input type="text" class="form-control" placeholder="Recibido">   
+                {% if recibido %}
+                  <input type="text" class="form-control" name='recibido' value="{{recibido}}" placeholder="Recibido">
+                {% else %}
+                   <input type="text" class="form-control" name='recibido' placeholder="Recibido">
+                {% endif %}
                 </div>
                 <div class="col-md-12 pb-4">
-                  <input type="text" class="form-control" readonly placeholder="Cambio">   
+                {% if cambio %}
+                  <input type="text" class="form-control" value="{{cambio}}" name='cambio' readonly placeholder="Cambio">
+                {% else %} 
+                  <input type="text" class="form-control" name='cambio' readonly placeholder="Cambio">
+                {% endif %}  
                 </div>
                 <div class="col-md-12 pb-2">
                   <button type="submit" class="btn btn-dark btn-block">Realizar pago</button>   
                 </div>
                  
               </div>
-            </form>
+           
         </section>
       </div>
     </div>

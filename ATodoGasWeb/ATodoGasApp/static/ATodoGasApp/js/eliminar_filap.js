@@ -1,20 +1,14 @@
-function confimarEliminacion(id){
-    Swal.fire({
-        title: '¿Está Seguro?',
-        text: "No se podra recuperar el cliente!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, Borrar!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-            
-          Swal.fire(
-            'Borrado!',
-            'El cliente se ha Eliminado.',
-            'Completado'
-          )
-        }
-      })
+function confimarEliminacionfila(idfila) {
+
+
+  window.location.href = "/ATodoGasApp/borrar_producto/" + idfila + "/";
+  Swal.fire({      
+      icon: 'info',
+      title: 'El producto ha sido eliminado con exito',
+      showConfirmButton: false,
+      timer: 2000
+    }
+  )
+
+
 }
