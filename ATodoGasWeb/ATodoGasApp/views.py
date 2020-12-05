@@ -1,6 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.conf import settings
 from .form import ClienteForm
 from .models import *
+
+
+
+    
 
 # Create your views here.
 

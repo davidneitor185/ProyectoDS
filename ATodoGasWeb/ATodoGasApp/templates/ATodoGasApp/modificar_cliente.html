@@ -40,6 +40,7 @@
     </head>
     <body>
         <section class = "cliente_M">
+            {% if user.is_authenticated %}
             <h1 style= "color: #0E698A; left: 607px;">Actualizar</h1>
             <div class="container">
             <div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
@@ -81,4 +82,24 @@
                     </div>
         </section>
     </body>
+    {% else %}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                
+        <script type="text/javascript">
+                    function alerta() {
+                        swal.fire({
+                                title: "¡Importante!",
+                                text: "Para Acceder A Esta Página Debes Iniciar Sesión",
+                                icon: "error", 
+                            })
+                        
+                    }
+        </script>
+        <div class="form-group row">
+            <div class="col-lg-12 text-center mt-4">
+                <input id="btn1" onclick="alerta();"type="submit" value="Información" class="btn btn-primary" >
+            </div>
+        </div>
+        <meta http-equiv="refresh" content="5;URL=http://localhost:8000/accounts/login/">
+        {% endif %}  
 </html>
