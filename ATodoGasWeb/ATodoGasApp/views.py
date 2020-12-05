@@ -240,7 +240,7 @@ def ventas(request):
                     detalleventa.total = float(r.total)                    
                     detalleventa.save()
                 rowsventas.clear()
-                print("ya salí /o/")
+                print("ya salí /|o/")
             else: 
                 messages.error(
                     request, 'Ingrese  Todos los campos ')
