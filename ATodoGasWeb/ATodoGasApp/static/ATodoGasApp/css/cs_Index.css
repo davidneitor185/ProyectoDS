@@ -171,8 +171,8 @@ background-color: white;
 
 /***************** Iconos Menu lateral ************************/
 .logo-Menu {
-    width: 20px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
     background-color: rgba(100,100,100,.3);
     float: right; 
 }
@@ -189,6 +189,11 @@ background-color: white;
 
 #Venta{
     background: url("/../static/ATodoGasApp/Carro.png");
+    background-size: cover;
+}
+
+#Inventario{
+    background: url("/../static/ATodoGasApp/tablita.png");
     background-size: cover;
 }
 

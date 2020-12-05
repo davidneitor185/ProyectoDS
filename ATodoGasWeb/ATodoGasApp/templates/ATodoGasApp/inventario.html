@@ -1,0 +1,95 @@
+{%extends "ATodoGasApp\index.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" href="{% static 'ATodoGasApp/css/inventario.css' %}">
+    
+   
+    </head>
+
+    <body>
+        <div class='contenedor'>
+            <form method="POST">
+                {% csrf_token %}
+            <div id='botones'>
+                <button name='agregar' type="submit" class="bton font-weight-bold btn btn-secondary mr-5">Agregar</button>
+                <button name='eliminar' type="submit" class="bton font-weight-bold btn btn-secondary mr-5">Eliminar</button>
+                <button name='modificar' type="submit" class="bton font-weight-bold btn btn-secondary mr-5">Editar</button>
+            </div>
+            
+            <div class='contBuscar'>
+            <div class='inpBuscar'>
+                <div class="input-group mb-3">
+                    <input name='produc' type="text" class="form-control" placeholder="Productos" >
+                    <div class="input-group-append">
+                    
+                      <button  name='buscar' class="btn btn-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class='inputs'>
+                <div class='inps'>
+                <input name='codigo' id='cod' class='form-control' placeholder='Codigo' />
+                </div>
+                <div class='inps'>
+                <select class='form-control' name='cate'>
+                    <option value='0' >Categoria</option>
+                    {% for o in cat%}
+                    <option value={{o.idcategoria}}>{{o.nombrecategoria}}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div class='inps'>
+                <input name='preV' id='preVenta' class='form-control' placeholder='Precio Venta' />
+                </div>
+                <div class='inps'>
+                    <input name='cantidad' type='seled' id='canti' class='form-control' placeholder='Cantidad' />
+                </div>
+            </div>
+        </form>
+
+        
+        <div  class="tba table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-hover table-bordered table-striped">
+                <thead class="head thead-dark">
+                    <tr class='font-weight-bold'>
+                      <th scope="col">Codigo</th>
+                      <th scope="col">Producto</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Categoria</th>
+                      <th scope="col">Precio Venta</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody class="tbod">
+                    {% for v in prod%}
+                    <tr>
+                      <td >{{v.codigo}}</td>
+                      <td>{{v.nombre_produc}}</td>
+                      {% for x in inv%}
+                      {% if x.idproducto == v %}
+                      <td>{{x.stock}}</td>
+                      {% endif %}
+                      {% endfor %}
+                      {% for y in cat%}
+                      {% if y.idcategoria == v.idcategoria %}
+                      <td>{{y.nombrecategoria}}</td>
+                      {% endif %}
+                      {% endfor %}
+                      <td>{{v.precioventa}}</td>
+                      
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+            </table>
+          </div>
+        
+        </div>
+    </body>
+</html>
+
+
+{% endblock %}

@@ -19,12 +19,27 @@
         <div class="row align-items-center">
         {% csrf_token %}
         <div class="col input-group mb-3 pt-3 pl-4">
-        {% if id_cliente%}        
-                <input type="text" class="form-control" value="{{id_cliente}}" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
-                
+
+       {% if clienteselect %}
+          <select id = "comboClientes" class = "form-control"  name="clientes">
+
+                      {% for c in clientes %}
+                          {% if clienteselect != c.idpersona  %}                            
+                            <option value={{c.idpersona}}>{{c.nombre}} {{c.apellido}}</option>
+                          {% else %}
+                            <option value={{c.idpersona}} selected>{{c.nombre}}  {{c.apellido}}</option>
+                          {% endif %}
+                      {% endfor %}
+          </select>
         {% else %}
-                <input type="text" class="form-control" placeholder="Cliente" aria-label="Recipient's username" aria-describedby="button-addon2" name="id_cliente">
+          <select id = "comboClientes" class = "form-control"  name="clientes">
+                    <option>seleccione un cliente...</option>
+                    {% for c in clientes %}
+                    <option value={{c.idpersona}}>{{c.nombre}}  {{c.apellido}}</option>
+                    {% endfor %}
+          </select> 
         {% endif %}
+              
         <div class="input-group-append">              
                 <button  class="btn btn-primary" name='consultar_cliente' type="submit"><i class="fa fa-search-plus"></i></button>
                 </div>          
@@ -128,11 +143,13 @@
     <div class="col input-group mb-3 pt-3 pl-4"> 
       
 
-      {% if codProd%}
-      <input type="text" class="form-control" id="codigo_producto" name="codProd" value="{{codProd}}" aria-label="Recipient's username" aria-describedby="button-addon2">
-      {% else %}
-      <input type="text" class="form-control" id="codigo_producto" name="codProd" placeholder="Codigo producto" aria-label="Recipient's username" aria-describedby="button-addon2">
-      {% endif %}
+      
+      <select class = "form-control"  id="codigo_producto" name="codProd">
+                    <option>seleccione un producto...</option>
+                    {% for p in productos %}
+                    <option value={{p.codigo}}>{{p.nombre_produc}}</option>
+                    {% endfor %}
+      </select>
       
       <div class="input-group-append">
         <button class="btn btn-primary" name='consultar_producto' type="submit" > <b><i class="fa fa-search-plus"></i></b></button> 

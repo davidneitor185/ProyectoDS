@@ -6,6 +6,7 @@ from django.contrib import messages
 # Create your views here.
 
 
+
 class Rowventas:
     def __init__(self):
         self.id = 0
@@ -49,7 +50,7 @@ def ventas(request):
     if request.method == 'POST':
         print("holi")
 
-        id_cliente = request.POST["id_cliente"]
+        
         nventa = request.POST["n_venta"]
         fecha = request.POST["fecha"]
         id_factura = request.POST["id_factura"]
@@ -61,9 +62,10 @@ def ventas(request):
         precio_venta = request.POST["precio_venta"]
         descuento = request.POST["descuento"]
         recibido = request.POST["recibido"]
+        clienteselect = int(request.POST["clientes"])
+        print(clienteselect)
 
         data = {
-            "id_cliente": id_cliente,
             "nventa": nventa,
             "fecha": fecha,
             "id_factura": id_factura,
@@ -77,27 +79,18 @@ def ventas(request):
             "tabla_cont": rowsventas,
             "total_a_pagar": total_a_pagar.total,
             "cambio":cambio.cambio,
-            "recibido":recibido
+            "recibido":recibido,
+            "clientes": persona,
+            "clienteselect": clienteselect,
+            "productos": productos            
         }
        
 
         if 'consultar_cliente' in request.POST:
             print("consultar cliente")
+            return redirect(to="Crear cliente")
 
-            idpersona = request.POST["id_cliente"]
-            for p in persona:
-                if p.identificacion == idpersona:
-                    existe = True
 
-            if existe:
-                messages.success(
-                    request, "Este cliente se encuentra en nuestra base de datos")
-
-                return render(request, 'ATodoGasApp/ventas.html', data)
-            else:
-                messages.error(
-                    request, "Este cliente no se encuentra en nuestra base de datos, porfavor creelo")
-                return redirect(to="Crear cliente")
         elif 'consultar_producto' in request.POST:
             print("consultar producto")
 
@@ -253,7 +246,7 @@ def ventas(request):
             
 
 
-    return render(request, 'ATodoGasApp/ventas.html',{"tabla_cont": rowsventas})
+    return render(request, 'ATodoGasApp/ventas.html',{"tabla_cont": rowsventas, "clientes": persona, "productos": productos })
 
 
 def borrar_producto(request, idfila):
@@ -340,3 +333,199 @@ def index(request):
 
 def prueba(request):
     return render(request, 'ATodoGasApp/prueba.html')
+
+def inventario(request):
+
+    prod = Producto.objects.all().order_by('codigo')
+    inv = Inventario.objects.all()
+    cat = Categoria.objects.all()
+
+    data = {
+
+        'prod': prod,
+        'inv' : inv,
+        'cat' : cat,
+        
+
+    }
+
+
+    if request.method == 'POST':
+
+
+        prod = request.POST["produc"]
+        codigo = request.POST["codigo"]
+        cate = request.POST["cate"]
+        preV = request.POST["preV"]
+        cantidad = request.POST["cantidad"]
+        
+
+        
+
+        if 'agregar' in request.POST:
+
+            
+            produci = Producto.objects.all()
+            bol = True
+            for p in produci:
+                if p.codigo == codigo:
+                    bol = False
+
+            if prod != '' and codigo != '' and cate != '0' and preV != '' and cantidad != '' and bol:
+
+                data['prod'] = prod
+                data['codigo'] = codigo
+                data['cate'] = cate
+                data['preV'] = preV
+                data['cantidad'] = cantidad
+
+                producto = Producto()
+                producto.nombre_produc = prod
+                producto.codigo = codigo
+                producto.precioventa = int(preV)
+                producto.idcategoria = int(cate)
+
+                producto.save()
+
+                idproducto = Producto.objects.get(codigo=codigo)
+                inven = Inventario()
+                inven.stock = int(cantidad)
+                inven.idproducto = idproducto
+                inven.save()
+
+                prod = Producto.objects.all().order_by('codigo')
+                inv = Inventario.objects.all()
+                cat = Categoria.objects.all()
+
+                data['prod'] = prod
+                data['inv'] = inv
+                data['cat'] = cat
+                
+
+                return render(request, 'ATodoGasApp/inventario.html', data)
+
+            else:
+
+                prod = Producto.objects.all().order_by('codigo')
+                inv = Inventario.objects.all()
+                cat = Categoria.objects.all()
+
+                data['prod'] = prod
+                data['inv'] = inv
+                data['cat'] = cat
+
+                messages.error(
+                    request, 'Ingrese Datos Validos ')
+                
+                return render(request, 'ATodoGasApp/inventario.html', data)
+
+            
+        if 'eliminar' in request.POST:
+            
+            produci = Producto.objects.all()
+            bol = False
+            for p in produci:
+                if p.codigo == codigo:
+                    bol = True
+
+            if codigo != '' and bol :
+
+
+                data['codigo'] = codigo
+
+
+                producto = Producto.objects.get(codigo=codigo)
+                inven = Inventario.objects.get(idproducto=producto)
+                inven.delete()
+                producto.delete()
+
+                prod = Producto.objects.all().order_by('codigo')
+                inv = Inventario.objects.all()
+                cat = Categoria.objects.all()
+
+                data['prod'] = prod
+                data['inv'] = inv
+                data['cat'] = cat
+                
+
+                return render(request, 'ATodoGasApp/inventario.html', data)
+            
+            else:
+
+                prod = Producto.objects.all().order_by('codigo')
+                inv = Inventario.objects.all()
+                cat = Categoria.objects.all()
+
+                data['prod'] = prod
+                data['inv'] = inv
+                data['cat'] = cat
+
+                messages.error(
+                    request, 'Ingrese un Codigo valido ')
+                
+                return render(request, 'ATodoGasApp/inventario.html', data)
+
+    
+        if 'modificar' in request.POST:
+
+            produci = Producto.objects.all()
+            bol = False
+            for p in produci:
+                if p.codigo == codigo:
+                    bol = True
+            
+            if prod != '' and codigo != '' and cate != '0' and preV != '' and cantidad != '' and bol:
+
+                data['prod'] = prod
+                data['codigo'] = codigo
+                data['cate'] = cate
+                data['preV'] = preV
+                data['cantidad'] = cantidad
+
+                producto = Producto.objects.get(codigo = codigo)
+
+                inven = Inventario.objects.get(idproducto=producto)
+
+                producto.nombre_produc = prod
+                producto.categoria = cate
+                producto.precioventa = preV
+                inven.stock = cantidad
+
+                producto.save()
+                inven.save()
+
+                prod = Producto.objects.all().order_by('codigo')
+                inv = Inventario.objects.all()
+                cat = Categoria.objects.all()
+
+                data['prod'] = prod
+                data['inv'] = inv
+                data['cat'] = cat
+
+                return render(request, 'ATodoGasApp/inventario.html', data)
+
+            
+            else:
+
+                prod = Producto.objects.all().order_by('codigo')
+                inv = Inventario.objects.all()
+                cat = Categoria.objects.all()
+
+                data['prod'] = prod
+                data['inv'] = inv
+                data['cat'] = cat
+
+
+                messages.error(
+                    request, 'Ingrese Datos Validos ')
+                
+                return render(request, 'ATodoGasApp/inventario.html', data)
+
+
+    
+    return render(request, 'ATodoGasApp/inventario.html', data)
+
+
+
+    
+    return render(request, 'ATodoGasApp/inventario.html', data)

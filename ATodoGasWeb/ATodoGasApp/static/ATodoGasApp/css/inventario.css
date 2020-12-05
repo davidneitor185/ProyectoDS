@@ -1,0 +1,72 @@
+.contenedor{
+    background-color: #2471A3;
+    width: 100%;
+    height: 100%;
+    
+}
+
+#botones{
+    justify-content:center;
+    display: flex;
+    padding-top: 3%;
+}
+
+.bton{
+    width: 15%;
+}
+
+.contBuscar{
+    display: flex;
+    justify-content:center;
+}
+.inpBuscar{
+    width: 50%;
+    padding-top: 4%;
+    padding-right: 3%;
+    
+    
+}
+
+
+.inputs{
+    padding-top: 4%;
+    padding-left: 8%;
+    padding-right: 8%;
+    justify-content:center;
+    display: flex;
+}
+.inps{
+    
+    width: 25%;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+}
+
+.tba{
+    margin-top: 5%;
+    padding-top: 5%;
+    padding-left: 8%;
+    padding-right: 8%;
+    height: 40%;
+    scroll-margin-right: 8%;
+    
+    
+    
+}
+.my-custom-scrollbar {
+    position: relative;
+    height: 40%;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+.head{
+    text-align: center;
+}
+.tbod{
+    background-color: #BDC3C7;
+    font-weight: bold;
+    text-align: center;
+}
