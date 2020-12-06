@@ -13,7 +13,8 @@
   <script src="{% static 'ATodoGasApp/js/eliminar_filap.js' %}"></script>
 {% endblock %}
 </head>
-<body>
+<body >
+<div class='cont'>
 <section class = "seccionArriba">
     <form method="POST">
         <div class="row align-items-center">
@@ -33,7 +34,7 @@
           </select>
         {% else %}
           <select id = "comboClientes" class = "form-control"  name="clientes">
-                    <option>seleccione un cliente...</option>
+                    <option value='0'>Seleccione un cliente...</option>
                     {% for c in clientes %}
                     <option value={{c.idpersona}}>{{c.nombre}}  {{c.apellido}}</option>
                     {% endfor %}
@@ -41,7 +42,7 @@
         {% endif %}
               
         <div class="input-group-append">              
-                <button  class="btn btn-primary" name='consultar_cliente' type="submit"><i class="fa fa-search-plus"></i></button>
+                <button  class="btn btn-primary" name='consultar_cliente' type="submit"> <b>Agregar</b> </button>
                 </div>          
           </div><div class="col"> 
             {% if user.is_authenticated %}          
@@ -71,25 +72,25 @@
               {% if id_factura %}
                 <input type="text" class="form-control" value="{{id_factura}}" name="id_factura">
               {% else %}
-               <input type="text" class="form-control" placeholder="n° factura" name="id_factura">
+               <input type="text" class="form-control" placeholder="N° Factura" name="id_factura">
               {% endif %} 
             </div>
             <div class="col">
               {% if forma_pago == '1' %}
                 <select id = "comboBoxFormaPago" class = "form-control"  name="forma_pago">
-                    <option>Forma de pago...</option>
+                    <option>Forma de Pago...</option>
                     <option value="1" selected>Efectivo</option>
                     <option value="2">Tarjeta de Credito</option>
                 </select>
               {% elif forma_pago == '2' %}
                 <select id = "comboBoxFormaPago" class = "form-control"  name="forma_pago">
-                    <option>Forma de pago...</option>
+                    <option>Forma de Pago...</option>
                     <option value="1">Efectivo</option>
                     <option value="2" selected>Tarjeta de Credito</option>
                 </select>
               {% else %}
                 <select id = "comboBoxFormaPago" class = "form-control" name="forma_pago">
-                    <option selected>Forma de pago...</option>
+                    <option selected>Forma de Pago...</option>
                     <option value="1">Efectivo</option>
                     <option value="2">Tarjeta de Credito</option>
                 </select>
@@ -142,14 +143,26 @@
   <div class="row align-items-center">
     <div class="col input-group mb-3 pt-3 pl-4"> 
       
-
-      
+      {% if productselect %}
+        <select class = "form-control"  id="codigo_producto" name="codProd">
+          <option value='0'>seleccione un producto...</option>
+            {% for p in productos %}
+                {% if productselect != p.codigo  %}                            
+                  <option value={{p.codigo}}>{{p.nombre_produc}}</option>
+                {% else %}
+                  <option value={{p.codigo}} selected>{{p.nombre_produc}}</option>
+                {% endif %}
+            {% endfor %}  
+        </select>
+      {% else %}
       <select class = "form-control"  id="codigo_producto" name="codProd">
-                    <option>seleccione un producto...</option>
+                    <option value='0'>Seleccione un producto...</option>
                     {% for p in productos %}
                     <option value={{p.codigo}}>{{p.nombre_produc}}</option>
                     {% endfor %}
       </select>
+
+      {% endif %}      
       
       <div class="input-group-append">
         <button class="btn btn-primary" name='consultar_producto' type="submit" > <b><i class="fa fa-search-plus"></i></b></button> 
@@ -166,7 +179,7 @@
     {% if precio_venta%}             
       <input type="text" class="form-control" value="{{precio_venta}}" name="precio_venta" readonly id="precio_venta" placeholder="Precio venta" >
     {% else %}
-      <input type="text" class="form-control" readonly id="precio_venta" name="precio_venta" placeholder="Precio venta" >
+      <input type="text" class="form-control" readonly id="precio_venta" name="precio_venta" placeholder="Precio Venta" >
     {% endif %}                
     </div>
     <div class="col"> 
@@ -179,13 +192,13 @@
     {% if descuento %}             
       <input type="text"  class="form-control" name="descuento" value="{{descuento}}" > 
     {% else %} 
-      <input type="text"  class="form-control" name="descuento" placeholder="descuento" > 
+      <input type="text"  class="form-control" name="descuento" placeholder="Descuento" > 
     {% endif %}
     
       </div>                
     </div>
     <div class="col pr-5">             
-      <button type="submit" class="btn btn-dark btn-block" name='agregar'>Agregar</button>                
+      <button type="submit" class="btn btn-dark btn-block font-weight-bold" name='agregar'>Agregar</button>                
     </div>
   </div>
 </section>
@@ -196,9 +209,9 @@
     
     <div class="row justify-content-md-center">
       <div class="col-9 pl-5">
-        <table class="table">
+        <table class="table table-hover table-striped table-bordered">
           <thead class="thead-dark">
-            <tr>
+            <tr class='font-weight-bold text-center'>
               <th scope="col">Codigo</th>
               <th scope="col">Producto</th>
               <th scope="col">Cantidad</th>
@@ -210,14 +223,14 @@
           <tbody>
          
           {% if tabla_cont %}
-            {% for v in tabla_cont%}
-              <tr >
+            {% for v in tabla_cont %}
+              <tr class='font-weight-bold text-center'>
                 <td >{{v.codigo}}</td>
                 <td>{{v.nombreprod}}</td>
                 <td>{{v.cantidad}}</td>
                 <td>{{v.precio}}</td>
                 <td>{{v.total}}</td>
-                <td ><button class="btn btn-danger"  type="submit" name='borrar' onclick="confimarEliminacionfila({{v.id}})" target="_blank"><i class="fa fa-trash" aria-hidden="true" name="borrar"></i></button><td>
+                <td ><button class="btn btn-danger"  type="submit" name='borrar' onclick="confimarEliminacionfila({{v.id}})" target="_blank"><i class="fa fa-trash" aria-hidden="true" name="borrar"></i></button></td>
               </tr>
               {% endfor %}
           {% endif %}
@@ -251,7 +264,7 @@
                 {% endif %}  
                 </div>
                 <div class="col-md-12 pb-2">
-                  <button type="submit" name='pagar' class="btn btn-dark btn-block">Realizar pago</button>   
+                  <button type="submit" name='pagar' class="btn btn-dark btn-block font-weight-bold">Realizar pago</button>   
                 </div>
                  
               </div>
@@ -261,6 +274,7 @@
     </div>
   </form>
 </section>
+</div>
 </body>
 </html> 
 {% endblock %}

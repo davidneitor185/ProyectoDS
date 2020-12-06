@@ -21,7 +21,7 @@ class usuarioAdmin (admin.ModelAdmin):
     
     
 class ventaAdmin (admin.ModelAdmin):
-    list_display=("idventa", "idcliente", "estado")
+    list_display=("idventa", "idcliente", "idusuario", "totalventa", "estado")
     search_fields=("idventa", "idcliente", "idusuario")
     
 class detalleventaAdmin (admin.ModelAdmin):

@@ -57,17 +57,17 @@
                     <div class="mx-auto col-sm-8 main-section" id="myTab" role="tablist">
                         <ul class="nav nav-tabs justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Crear</a>
+                                <a class="nav-link active font-weight-bold" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false">Crear</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form" aria-selected="true">Actualizar</a>				   	
+                                <a class="nav-link font-weight-bold" id="form-tab" data-toggle="tab" href="#form" role="tab" aria-controls="form" aria-selected="true">Actualizar</a>				   	
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Clientes</h4>
+                                        <h4 class='font-weight-bold'>Clientes</h4>
                                     </div>
                                     <div class="card-body">
                                         <form class="form" method="POST" action="" role="form" autocomplete="off">
@@ -81,8 +81,8 @@
                                             
                                             <div class="form-group row">
                                                 <div class="col-lg-12 text-center">
-                                                    <input type="reset" class="btn btn-secondary" value="Cancelar">
-                                                    <input type="submit" class="btn btn-primary"
+                                                    <input type="reset" class="btn btn-secondary font-weight-bold" value="Cancelar">
+                                                    <input type="submit" class="btn btn-primary font-weight-bold"
                                                         value="Guardar">
                                                 </div>
                                             
@@ -96,13 +96,13 @@
                             <div class="tab-pane fade" id="form" role="tabpanel" aria-labelledby="form-tab">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Actualizar</h4>
+                                        <h4 class='font-weight-bold'>Actualizar</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table id="tablita" class="table table-bordered table-hover table-striped mydataTable">
-                                                <thead class="thead-light">
-                                                <tr>
+                                                <thead class="thead-dark">
+                                                <tr class='font-weight-bold text-center'>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Nombre</th>
                                                     <th scope="col">Apellido</th>
@@ -118,7 +118,7 @@
                                                   
                                                 {% for p in persona %}
                                                     
-                                                        <tr>
+                                                        <tr class='font-weight-bold text-center'>
                                                             <th scope="row">{{p.idpersona}}</th>
                                                             <td>{{ p.nombre }}</td>
                                                             <td>{{ p.apellido }}</td>
@@ -127,8 +127,8 @@
                                                             <td>{{ p.direccion }}</td>
                                                             <td>{{ p.municipio }}</td>
                                                             <td>{{ p.identificacion }}</td>
-                                                            <td><a  class="btn btn-primary" href="./modificar_cliente/{{p.idpersona}}"target="_blank" >Actualizar</a>
-                                                                <a class="btn btn-danger" href="#" onclick="confimarEliminacion({{p.idpersona}})">Borrar</a>
+                                                            <td><a  class="btn btn-primary font-weight-bold" href="./modificar_cliente/{{p.idpersona}}"target="_blank" >Actualizar</a>
+                                                                <a class="btn btn-danger font-weight-bold" href="#" onclick="confimarEliminacion({{p.idpersona}})">Borrar</a>
                                                             </td>
                                                         </tr>
                                                     

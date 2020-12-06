@@ -27,6 +27,11 @@
                       <button  name='buscar' class="btn btn-secondary" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     
                     </div>
+                    <div class="input-group-append">
+                    
+                        <button  name='recargar' class="btn btn-secondary" type="submit"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                      
+                      </div>
                 </div>
             </div>
             </div>
@@ -65,24 +70,43 @@
                     </tr>
                   </thead>
                   <tbody class="tbod">
-                    {% for v in prod%}
-                    <tr>
-                      <td >{{v.codigo}}</td>
-                      <td>{{v.nombre_produc}}</td>
-                      {% for x in inv%}
-                      {% if x.idproducto == v %}
-                      <td>{{x.stock}}</td>
-                      {% endif %}
-                      {% endfor %}
-                      {% for y in cat%}
-                      {% if y.idcategoria == v.idcategoria %}
-                      <td>{{y.nombrecategoria}}</td>
-                      {% endif %}
-                      {% endfor %}
-                      <td>{{v.precioventa}}</td>
-                      
-                    </tr>
-                    {% endfor %}
+                    {% if prod2 %}
+                        <tr>
+                        <td >{{prod2.codigo}}</td>
+                        <td>{{prod2.nombre_produc}}</td>
+                        {% for x in inv%}
+                        {% if x.idproducto == prod2 %}
+                        <td>{{x.stock}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        {% for y in cat%}
+                        {% if y.idcategoria == prod2.idcategoria %}
+                        <td>{{y.nombrecategoria}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        <td>{{prod2.precioventa}}</td>
+                    {% else %}
+                        {% for v in prod1%}
+                        <tr>
+                        <td >{{v.codigo}}</td>
+                        <td>{{v.nombre_produc}}</td>
+                        {% for x in inv%}
+                        {% if x.idproducto == v %}
+                        <td>{{x.stock}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        {% for y in cat%}
+                        {% if y.idcategoria == v.idcategoria %}
+                        <td>{{y.nombrecategoria}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        <td>{{v.precioventa}}</td>
+                        
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    
                   </tbody>
             </table>
           </div>
