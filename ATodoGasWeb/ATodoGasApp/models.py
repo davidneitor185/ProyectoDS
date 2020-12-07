@@ -43,7 +43,7 @@ class Detalleingreso(models.Model):
 class Detalleventa(models.Model):
     idventadet = models.AutoField(primary_key=True)
     idventa = models.ForeignKey('Venta', models.DO_NOTHING, db_column='idventa')
-    codigoprod = models.ForeignKey('Producto', models.DO_NOTHING, db_column='codigoprod')
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idproducto')
     cantidad = models.IntegerField()
     preciouni = models.FloatField()
     total = models.FloatField()
@@ -141,6 +141,7 @@ class Venta(models.Model):
     idusuario = models.IntegerField()
     totalventa = models.FloatField(blank=True, null=True)
     fecha = models.DateField(blank=True, null=True)
+    formadepago = models.CharField(max_length=50, blank=True, null=True)
     estado = models.CharField(max_length=30, blank=True, null=True)
     idfactura = models.IntegerField(blank=True, null=True)
     iva = models.BooleanField(blank=True, null=True)

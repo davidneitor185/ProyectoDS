@@ -8,9 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu</title>
   <link rel="stylesheet" href="{% static 'ATodoGasApp/css/cs_Index.css' %}">
-
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{% static 'ATodoGasApp/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -42,12 +43,12 @@
               <div class="row row-cols-1 justify-content-center">
                 {% if user.is_authenticated %}
                
-                <button type="button" style="color: #97D5FE;" class="btn btn-info btn-sm btn-block btn-outline-dark pb-1 mb-0">Usuario: {{ user.username }}</button>
+                <button type="button" style="color: #97D5FE;" class="btn btn-info btn-sm btn-block btn-outline-dark pb-1 mb-0 font-weight-bold">Usuario: {{ user.username }}</button>
                   
                
                 {% endif %}
                 
-                <a href="{% url 'logout' %}" style="color: #97D5FE;"  type="button"  class="btn btn-info btn-sm btn-block btn-outline-dark pt-1 mt-0">Cerrar Sesion</a>
+                <a href="{% url 'logout' %}" style="color: #97D5FE;"  type="button"  class="btn btn-info btn-sm btn-block btn-outline-dark pt-1 mt-0 font-weight-bold">Cerrar Sesion</a>
                 
                 
                 <div class="col-md ml-3 mt-2">
@@ -55,7 +56,7 @@
                 </div>
                 <div class="col ml-5 pl-4">
                   <font color="white">
-                    <h2> A Todo Gas</h2>
+                    <h2 class='font-weight-bold'> A Todo Gas</h2>
                   </font>
                 </div>
               </div>
@@ -64,14 +65,15 @@
 
 
                 <!------------Contenido Menu lateral ----------------->
-                <li><a href="#" style="text-decoration: none;">Consultar</a>
-                  <div class="logo-Menu" id="Consulta"></div>
-                </li>
+                
                 <li><a href="./crear_cliente" style="text-decoration: none;">Crear Cliente</a>
-                  <div class="logo-Menu" id="Cliente"></div>
+                  <div class="logo-Menu font-weight-bold" id="Cliente"></div>
                 </li>
                 <li><a href="./ventas" style="text-decoration: none;">Venta</a>
-                  <div class="logo-Menu" id="Venta"></div>
+                  <div class="logo-Menu font-weight-bold" id="Venta"></div>
+                </li>
+                <li><a href="./inventario" style="text-decoration: none;">Inventario</a>
+                  <div class="logo-Menu font-weight-bold" id="Inventario"></div>
                 </li>
 
             </nav>
@@ -79,13 +81,34 @@
           </div>
           
         </div>
-        <div class="col-md-10 pl-0 pr-0">
+        <div class="conte col-md-10 pl-0 pr-0">
           
           <!--------- Contenido Cambiante --------->
+          
+          {% if user.is_authenticated %}
           {% block content %}
 
           {% endblock %}
-          
+          {% else %}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                
+        <script type="text/javascript">
+                    function alerta() {
+                        swal.fire({
+                                title: "¡Importante!",
+                                text: "Para Acceder A Esta Página Debes Iniciar Sesión",
+                                icon: "error", 
+                            })
+                        
+                    }
+        </script>
+        <div class="form-group row">
+            <div class="col-lg-12 text-center mt-4">
+                <input id="btn1" onclick="alerta();"type="submit" value="Información" class="btn btn-primary" >
+            </div>
+        </div>
+        <meta http-equiv="refresh" content="5;URL=http://localhost:8000/accounts/login/">
+        {% endif %}
         </div>
       </div>
     </div>
@@ -112,6 +135,18 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.3/js/bootstrap.bundle.min.js"
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
     crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    {% if messages %}
+      {%for m in messages%}
+          <script>
+          Swal.fire({
+            "tittle": "ojito",
+            "text": "{{m}}",
+            "icon": "info"
+          })
+          </script>
+      {% endfor %}
+    {% endif %} 
 </body>
 
 

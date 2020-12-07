@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
+
 LOGIN_REDIRECT_URL = '/ATodoGasApp/ventas'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
@@ -79,8 +81,10 @@ WSGI_APPLICATION = 'ATodoGasWeb.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'default': 
+    
+    {
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dcjhdbdssuj1m1',
         'USER': 'ogletouqtdoanm',
         'PASSWORD': '5783591bb6716cf2c1b491f8823eedeba0ac45d64b69e6743c816e7c96e1d020',

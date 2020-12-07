@@ -43,7 +43,7 @@ class Detalleingreso(models.Model):
 class Detalleventa(models.Model):
     idventadet = models.AutoField(primary_key=True)
     idventa = models.ForeignKey('Venta', models.DO_NOTHING, db_column='idventa')
-    codigoprod = models.ForeignKey('Producto', models.DO_NOTHING, db_column='codigoprod')
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idproducto')
     cantidad = models.IntegerField()
     preciouni = models.FloatField()
     total = models.FloatField()
