@@ -64,17 +64,23 @@
               <ul>
 
 
-                <!------------Contenido Menu lateral ----------------->
-                
-                <li><a href="./crear_cliente" style="text-decoration: none;">Crear Cliente</a>
+                <!------------Contenido Menu lateral ---------------->
+                <a href="./crear_cliente" style="text-decoration: none;">
+                <li>Crear Cliente
                   <div class="logo-Menu font-weight-bold" id="Cliente"></div>
                 </li>
-                <li><a href="./ventas" style="text-decoration: none;">Venta</a>
+              </a>
+                <a href="./ventas" style="text-decoration: none;">
+                <li>Venta
                   <div class="logo-Menu font-weight-bold" id="Venta"></div>
                 </li>
-                <li><a href="./inventario" style="text-decoration: none;">Inventario</a>
+              </a>
+                <a href="./inventario" style="text-decoration: none;">
+                <li>Inventario
                   <div class="logo-Menu font-weight-bold" id="Inventario"></div>
                 </li>
+                </a>
+                
 
             </nav>
 
@@ -83,7 +89,7 @@
         </div>
         <div class="contcam col-md-10 pl-0 pr-0">
           
-          <!--------- Contenido Cambiante --------->
+          <!--------- Contenido Cambiante -------->
           {% if user.is_authenticated %}
           {% block content %}
 
@@ -119,7 +125,7 @@
 
   </section>
 
-  <!----------- Link Script Js ----------->
+  <!----------- Link Script Js ---------->
 
   <script src="{% static 'ATodoGasApp/js/js_Index.js' %}" charset="utf-8"></script>
 
