@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'ATodoGasApp/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+
+<style>
+    .img-invoice {
+        width: 50px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .head {
+        
+        text-transform: uppercase;
+    }
+
+    #invoice thead tr th {
+        text-align: left;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        padding-top: 4px;
+    }
+
+    #invoice thead tr {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    #invoice tbody tr {
+        padding: 0;
+    }
+
+    .text-center{
+        text-align: center;
+    }
+    .tabla{
+        text-align: center;
+    }
+
+    .presen{
+        width: 50%;
+        text-align: right;
+        
+    }
+    .pre{
+        text-align: center;
+    }
+</style>
+
+<body>
+<div class='presen'>
+    <div class='pre font-weight-bold'>
+<img src="{{ icon }}" class="img-invoice">
+
+<p class="head">
+    {{ comp.name|upper }}<br>
+    {{ comp.ruc }}<br>
+    {{ comp.address|upper }}
+</p>
+</div>
+</div>
+<p>
+    <b>FACTURA:</b> {{ venta.idfactura }}<br>
+    <b>FECHA DE VENTA:</b> {{ venta.fecha }}<br>
+    <b>CLIENTE:</b> {{ cliente.nombre|upper }} {{cliente.apellido|upper}}<br>
+    <b>DOCUMENTO:</b> {{ cliente.identificacion }}<br>
+</p>
+
+
+<table class=" table-hover table-bordered table-striped" id="invoice">
+    <thead>
+    <tr>
+        <th style="width: 15%; text-align: center;">Codigo</th>
+        <th style="width: 37%; text-align: center;">Producto</th>
+        <th style="width: 10%; text-align: center;">Cantidad</th>
+        <th style="width: 18%; text-align: center;">P.Unitario</th>
+        <th style="width: 15%; text-align: center;">Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for d in detalle %}
+            <tr {% if forloop.first %}style="padding-top: 3px;" {% endif %}>
+                <td style="text-align: center;">{{ d.idproducto.codigo }}</td>
+                <td style="text-align: center;">{{ d.idproducto.nombre_produc }}</td>
+                <td style="text-align: center;">{{ d.cantidad }}</td>
+                <td style="text-align: center;">${{ d.preciouni }}</td>
+                <td style="text-align: center;">${{ d.total }}</td>
+            </tr>
+    {% endfor %}
+    
+    <tr style="border-top: 1px solid black; padding-top: 4px;">
+        <td colspan="3"></td>
+        <td ><b>SUBTOTAL</b></td>
+        <td style='text-align: center;'>${{ venta.totalventa }}</td>
+    </tr>
+    <tr style="padding-top: 0px;">
+        <td colspan="3"></td>
+        <td ><b>IVA 12%</b></td>
+        <td style='text-align: center;'>${{ totali }}</td>
+    </tr>
+    <tr style="padding-top: 0px;">
+        <td colspan="3"></td>
+        <td ><b>TOTAL A PAGAR</b></td>
+        <td style='text-align: center;' >${{ totalv }}</td>
+    </tr>
+    
+    </tbody>
+</table>
+<div class='presen '>
+    <div class='pre font-weight-bold'>
+<div style="margin-top: 20%;">
+    
+        <p style='text-align: center;' class=' mt-3'>****GRACIAS POR SU COMPRA****</p>
+   
+        <p style='text-align: center;' class=' mt-3'>NO SE ACEPTAN CAMBIOS NI DEVOLUCIONES</p>
+    
+</div>
+</div>
+</div>
+<div style='padding-top: 4%;' >
+<a class='ml-3' href='./ventas' ><button type="button" class="btn btn-light"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+</div>
+</body>
+</html>

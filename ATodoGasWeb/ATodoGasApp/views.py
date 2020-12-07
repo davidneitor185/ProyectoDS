@@ -189,9 +189,11 @@ def ventas(request):
             return render(request, 'ATodoGasApp/ventas.html', data)
         elif 'pagar' in request.POST:
             venta = Venta()
+            
 
             if clienteselect != '':
                 venta.idcliente = int(clienteselect)
+
             else:
                 venta.idcliente = ''
 
@@ -262,6 +264,23 @@ def ventas(request):
                     detalleventa.save()
                     rowsventas.clear()
                     print("ya salí sin for /o/")
+                detalle = Detalleventa.objects.filter(idventa= venta.idventa)
+                
+                cliente = Persona.objects.get(idpersona = int(clienteselect))
+                totalv = "{:.2f}".format(venta.totalventa * 1.12)
+                totali = "{:.2f}".format(venta.totalventa * 0.12)
+                tamdet = len(detalle)
+                data1 = {
+                    'comp': {'name': 'Soluciones Tecnigas S.A.', 'ruc': '9999999999999', 'address': 'Cali, Valle del cauca'},
+                    'detalle': detalle,
+                    'venta': venta,
+                    'cliente': cliente,
+                    'totalv': totalv,
+                    'totali': totali,
+                    'tamdet': tamdet 
+                }
+                return render (request, 'ATodoGasApp/factura.html', data1 )
+                
             else:
                 messages.error(
                     request, 'Ingrese  Todos los campos ')

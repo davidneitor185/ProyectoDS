@@ -273,6 +273,11 @@ button {
     height: 50%;
     
 }
+.contcam{
+    background-color: #87ACC6;
+    height: 100%;
+    width: auto;
+}
 .miRow{   
    height: 772px;
     
